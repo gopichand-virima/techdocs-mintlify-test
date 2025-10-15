@@ -7,48 +7,92 @@
     "light": "#00BFA5",
     "dark": "#008A44"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/assets/images/Virima_logo.png",
+  "seo": {
+    "indexing": "navigable",
+    "metatags": {
+      "charset": "UTF-8",
+      "viewport": "width=device-width, initial-scale=1.0",
+      "description": "Virima technical documentation: discovery, CMDB, ITAM, IPAM, correlations, blueprints, and integrations.",
+      "keywords": "Virima, ITAM, CMDB, Discovery, IPAM, Service Mapping, VVID, Blueprints, ITSM Integrations",
+      "author": "Virima",
+      "theme-color": "#00A651",
+      "color-scheme": "light",
+      "canonical": "https://testtechdocs.virima.com",
+      "og:title": "Virima Documentation",
+      "og:type": "website",
+      "og:url": "https://testtechdocs.virima.com",
+      "og:image": "/assets/images/Virima_logo.png",
+      "og:description": "Everything you need to build, integrate, and scale with Virima's enterprise IT management platform.",
+      "og:site_name": "Virima Docs",
+      "og:locale": "en_US",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Virima Documentation",
+      "twitter:description": "Virima discovery, CMDB, ITAM, IPAM, and integrations documentation.",
+      "twitter:image": "/assets/images/Virima_logo.png",
+      "distribution": "global",
+      "language": "en"
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
   "navigation": {
     "tabs": [
       {
         "tab": "Docs",
         "groups": [
           {
-            "group": "Overview & Dashboard",
+            "group": "Overview",
             "pages": [
-              "pages/index",
+              "pages/index"
+            ]
+          },
+          {
+            "group": "Dashboard",
+            "pages": [
               "pages/Dashboard"
             ]
           },
           {
-            "group": "Azure",
+            "group": "Agentless Discovery",
             "pages": [
-              "pages/Azure_Cloud_Service",
-              "pages/Azure_Services_Integration_Documentation"
+              "pages/Discovery_Dashboard"
             ]
           },
           {
-            "group": "CMDB & ITAM",
+            "group": "CMDB",
             "pages": [
               "pages/ITAM_CMDB",
               "pages/CMDB_Properties",
-              "pages/Blueprints",
               "pages/Relationship_Types_SACM",
               "pages/Confidence_Configuration",
               "pages/Correlation"
             ]
           },
           {
-            "group": "Discovery",
+            "group": "Virima Visual Impact Display",
             "pages": [
-              "pages/Discovery_Dashboard",
-              "pages/Probe"
+              "pages/Blueprints"
             ]
           },
           {
             "group": "IPAM",
             "pages": [
               "pages/IPAM_Networks"
+            ]
+          },
+          {
+            "group": "Discovery Agents",
+            "pages": [
+              "pages/Probe"
+            ]
+          },
+          {
+            "group": "IT Asset Management",
+            "pages": [
+              "pages/Procurement"
             ]
           },
           {
@@ -61,9 +105,10 @@
             ]
           },
           {
-            "group": "Procurement",
+            "group": "Azure & Integrations",
             "pages": [
-              "pages/Procurement"
+              "pages/Azure_Cloud_Service",
+              "pages/Azure_Services_Integration_Documentation"
             ]
           },
           {
@@ -74,21 +119,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "navbar": {
     "links": [
