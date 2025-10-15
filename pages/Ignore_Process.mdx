@@ -1,3 +1,6 @@
+---
+title: Ignore Process
+---
 # Ignore Process
 
 - [Overview](#IgnoreProcess-Overview)
@@ -54,7 +57,7 @@ The **Ignore Process Names** feature allows you to exclude certain software proc
 
 1.  Navigate to the **Ignore Process Names** dialog in the relevant configuration area of the Virima application.
 
-<img src="/assets/images/Ignore_Process/media/image1-1.png" style="width:4.875in;height:1.5in" />
+<img src="/assets/images/Ignore_Process/media/image1-1.png" />
 
 2.  Input one or more process names to be ignored, separated by commas (e.g., notepad.exe, calc.exe).
 
@@ -82,11 +85,11 @@ The following screenshots show the CMDB records when svchost.exe is **not ignore
 
 - **IP Connections** – The process svchost.exe is included in IP connection results.
 
-<img src="/assets/images/Ignore_Process/media/image2-1.png" style="width:4.875in;height:2.50833in" />
+<img src="/assets/images/Ignore_Process/media/image2-1.png" />
 
 - **Software Instance** – A software instance is created for svchost.exe.
 
-<img src="/assets/images/Ignore_Process/media/image3-1.png" style="width:4.875in;height:2.2in" />
+<img src="/assets/images/Ignore_Process/media/image3-1.png" />
 
 - **Processes** – The svchost.exe process is captured during the scan.
 
@@ -104,21 +107,21 @@ Once ignored:
 
 - After rescanning and syncing to the CMDB, svchost.exe no longer appears as a software instance.
 
-<img src="/assets/images/Ignore_Process/media/image4-1.png" style="width:4.875in;height:1.95in" />
+<img src="/assets/images/Ignore_Process/media/image4-1.png" />
 
 However, the following are still discovered:
 
 - IP connections associated with the process
 
-<img src="/assets/images/Ignore_Process/media/image5-1.png" style="width:4.875in;height:2.675in" />
+<img src="/assets/images/Ignore_Process/media/image5-1.png" />
 
 - Listening processes
 
-<img src="/assets/images/Ignore_Process/media/image6-1.png" style="width:4.875in;height:2.88333in" />
+<img src="/assets/images/Ignore_Process/media/image6-1.png" />
 
 - Relationships
 
-<img src="/assets/images/Ignore_Process/media/image7-1.png" style="width:4.875in;height:2.45833in" />
+<img src="/assets/images/Ignore_Process/media/image7-1.png" />
 
 If relationships were created before the process was ignored, they remain intact. Ignoring a process does not automatically remove existing relationships.
 
@@ -136,23 +139,23 @@ The results are as follows:
 
 - **IP Connections** – Continue to be discovered.
 
-<img src="/assets/images/Ignore_Process/media/image5-1.png" style="width:4.875in;height:2.675in" />
+<img src="/assets/images/Ignore_Process/media/image5-1.png" />
 
 - **Software Instance** – No longer discovered.
 
-<img src="/assets/images/Ignore_Process/media/image8-1.png" style="width:4.875in;height:2.24167in" />
+<img src="/assets/images/Ignore_Process/media/image8-1.png" />
 
 - **Relationships** – No new relationships created.
 
-<img src="/assets/images/Ignore_Process/media/image9-1.png" style="width:4.875in;height:1.925in" />
+<img src="/assets/images/Ignore_Process/media/image9-1.png" />
 
 - **Processes** – Still appear in the system.
 
-<img src="/assets/images/Ignore_Process/media/image10-1.png" style="width:4.875in;height:2.4in" />
+<img src="/assets/images/Ignore_Process/media/image10-1.png" />
 
 - **Listening Processes** – Still appear in the system.
 
-<img src="/assets/images/Ignore_Process/media/image6-1.png" style="width:4.875in;height:2.88333in" />
+<img src="/assets/images/Ignore_Process/media/image6-1.png" />
 
 ## Best Practices
 
