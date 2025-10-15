@@ -3,9 +3,7 @@
   "theme": "mint",
   "name": "Virima Documentation",
   "colors": {
-    "primary": "#00A651",
-    "light": "#00BFA5",
-    "dark": "#008A44"
+    "primary": "#00A651"
   },
   "favicon": "/assets/images/Virima_logo.png",
   "seo": {
@@ -125,25 +123,22 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://virima.com"
+      },
+      {
+        "label": "Developers",
+        "href": "https://virima.com"
+      },
+      {
+        "label": "Console",
+        "href": "https://virima.com"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
+    ]
   },
   "contextual": {
     "options": [
       "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "view"
     ]
   },
   "seo": {
