@@ -30,6 +30,9 @@
       "twitter:image": "/assets/images/Virima_logo.png",
       "distribution": "global",
       "language": "en"
+    },
+    "search": {
+      "prompt": "Search Virima docs"
     }
   },
   "logo": {
@@ -140,12 +143,6 @@
       "copy",
       "view"
     ]
-  },
-  "seo": {
-    "indexing": "navigable",
-    "search": {
-      "prompt": "Search Virima docs"
-    }
   },
   "footer": {
     "socials": {
