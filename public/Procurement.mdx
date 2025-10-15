@@ -1,0 +1,402 @@
+# Procurement
+
+# Drill-down overview: PO → PO Line Items → Receiving Slip Lines
+
+## What you can see
+
+- **Purchase Order (PO)**: header details (vendor, dates, terms, totals).
+
+- **PO Line Items**: what was ordered (model, part no., qty, unit cost).
+
+- **Receiving Slip Lines**: the actual items/quantities received against a **specific PO line**.
+
+- **Receiving Slips**: each delivery against a PO.
+
+Keys that tie everything together  
+**PO Number** → **PO Line Item Number** → **Receiving Slip Line Number**
+
+Note: Receiving Slip can be referred from Receiving Slip Line
+
+Steps
+
+Navigation to Purchase Order Screen. Left Nav-\>Procurement-\>Purchase Order
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image1-1.png" style="width:4.875in;height:2.36667in" />
+
+Click on PO Id to view the details of the Purchase Order
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image2.png" style="width:4.875in;height:0.86667in" />
+
+Click on PO Line Items Tab to view the PO Line items associated with the Purchase Order
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image3-1.png" style="width:4.875in;height:2.55833in" />
+
+Click on the specific PO Line Item to view the details of the PO Line Item
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image4-1.png" style="width:4.875in;height:1.29167in" />
+
+Click on Receiving Slip Lines tab to view the Receiving Slip Lines associated with the selected PO Line Item
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image5-1.png" style="width:4.875in;height:2.54167in" />
+
+Click on the specific Receiving Slip Line to view the details of the items received against the PO Line Item
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image6-1.png" style="width:4.875in;height:1.31667in" />
+
+Receiving Slip Lines specific attributes are displayed as below
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image7-1.png" style="width:4.875in;height:1.91667in" />
+
+To view the Receiving Slip (Which is parent of Receiving Slip Lines) Click non the Receiving Slip Id in the above screen. The details of the Receiving Slip shall be displayed as below.
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image8-1.png" style="width:4.875in;height:1.31667in" />
+
+## Example user journey (1 minute)
+
+1.  Open **PO-2025-001** → open **POL-001-01** *(PowerEdge R740)*.
+
+2.  Click **Receiving Slip Lines** → view **RSL-1001-01** (Qty 1 on 2025-09-01) and **RSL-1002-…** (if any).
+
+3.  Confirm **Received Quantity** updated; check **Remaining Quantity** to see if more units are due.
+
+# Procurement Properties & Procurement Property Group
+
+The Procurement Custom Properties and Groups system provides a flexible, configurable framework for managing dynamic properties across various procurement entities within the Virima platform. This system enables administrators to define, modify, and organize custom fields for different procurement modules without requiring code modifications, supporting business-specific requirements and evolving organizational needs. 
+
+ 
+
+The system encompasses six core procurement entity types: Requested Items, Purchase Orders, Purchase Order Line Items, Receiving Slips, Receiving Slip Lines, and Transfer Orders. Each entity type supports custom properties organized into logical groups, with comprehensive validation, audit trails, and integration capabilities. 
+
+Navigate to Custom Property and Property Group Menu
+
+1.  Click on Admin
+
+2.  Under Procurement
+
+    1.  Procurement Properties
+
+    2.  Procurement Property Group
+
+ 
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image9.png" style="width:4.875in;height:0.41667in" />
+
+## Procurement Group
+
+A *property group* is a logical collection of related properties. This helps in organizing fields into meaningful clusters.
+
+View existing Property Group
+
+1.  Click on Admin
+
+2.  Under Procurement
+
+3.  Click on Procurement Property Menu
+
+4.  Landing Page will display a list of existing Properties
+
+<!-- -->
+
+5.  Click on Existing Property Group to view details of the Property Group
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image10.png" style="width:4.875in;height:0.91667in" />
+
+Primary Details
+
+| **Fields**       | **Description**                    |
+|------------------|------------------------------------|
+| Created On       | Timestamp when record was created  |
+| Last Modified On | Timestamp when record was modified |
+| Created By       | Logged in User Name                |
+| Last Modified By | Logged in User Name                |
+
+Details
+
+| **Fields** | **Description**                                             |
+|------------|-------------------------------------------------------------|
+| Group Name | Name of the Group                                           |
+| UI Order   | Order in which the Group is displayed in Procurement Module |
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image11-1.png" style="width:4.875in;height:1.28333in" />
+
+History
+
+| **Fields**  | **Description**                                  |
+|-------------|--------------------------------------------------|
+| Action      | Type of Change executed. Only Edit is applicable |
+| Modified On | Timestamp when records was modified              |
+| Modified By | Logged in User Name who Modified the record      |
+| Changes     | Details of changes made                          |
+
+## Add a new Property Group
+
+1.  Click on Admin
+
+2.  Under Procurement
+
+3.  Click on Procurement Property Group Menu
+
+4.  Landing Page will display a list of existing Property Groups
+
+5.  Click on Select Actions
+
+6.  Click on New Procurement Property Group
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image12.png" style="width:4.875in;height:1.1in" />
+
+7.  Following screen shall be displayed
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image13.png" style="width:4.875in;height:0.9in" />
+
+| **Fields** | **Description**                              |
+|------------|----------------------------------------------|
+| Group Name | Name of the Group                            |
+| UI Order   | Order in which this group shall be displayed |
+
+8.  Click on Add to save the Group
+
+9.  The record will appear on the property group list view
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image14-1.png" style="width:4.875in;height:1.35in" />
+
+## Delete a new Property Group
+
+1.  Select the record to be deleted
+
+2.  Click on Select Actions
+
+3.  Click on Delete
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image15-1.png" style="width:4.875in;height:1.35in" />
+
+4.  A confirmation pop-up shall be displayed
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image16-1.png" style="width:4.875in;height:1.75833in" />
+
+5.  Type deleted and click on Delete to delete the group
+
+6.  Click on Cancel to abort the delete operation
+
+# Procurement Property
+
+### View existing Property Group
+
+1.  Click on Admin
+
+2.  Under Procurement
+
+3.  Click on Procurement Property Group Menu
+
+4.  Landing Page will display a list of existing Property Groups
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image17-1.png" style="width:4.875in;height:1.825in" />
+
+5.  Click on Existing Property to view details of the Property
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image18-1.png" style="width:4.875in;height:1.375in" />
+
+Primary Details
+
+| **Fields**       | **Description**                    |
+|------------------|------------------------------------|
+| Created On       | Timestamp when record was created  |
+| Last Modified On | Timestamp when record was modified |
+| Created By       | Logged in User Name                |
+| Last Modified By | Logged in User Name                |
+
+Details
+
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Fields</strong></th>
+<th style="text-align: center;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Property Name</td>
+<td><ul>
+<li><p>Text input with validation for uniqueness and naming conventions</p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Property Type</td>
+<td><ul>
+<li><p>Dropdown selection (String, Integer, Long, Boolean, etc.) </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Property Group</td>
+<td><ul>
+<li><p>Dropdown populated from existing property groups </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Module Type</td>
+<td><ul>
+<li><p>Dropdown selection from available procurement modules (Requested Item, Purchase Order, Purchase Order Line Item, Receiving Slip, Receiving Slip Line, Transfer Order)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Property Style</td>
+<td><ul>
+<li><p>Dropdown for display style configuration (Short Text, Link, Drop Down, Check Box, Cost, Text Editor)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td>UI Order</td>
+<td><ul>
+<li><p>Numeric field for display sequence control </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Is Visible</td>
+<td><ul>
+<li><p>Checkbox to control property visibility in user interfaces </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Is Mandatory</td>
+<td><ul>
+<li><p>Checkbox to enforce required field validation </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Is Multiple</td>
+<td><ul>
+<li><p>Checkbox to enable multiple value selection</p></li>
+<li><p>Only applicable for Type Link</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image19-1.png" style="width:4.875in;height:1.5in" />
+
+History
+
+| **Fields**  | **Description**                                  |
+|-------------|--------------------------------------------------|
+| Action      | Type of Change executed. Only Edit is applicable |
+| Modified On | Timestamp when records was modified              |
+| Modified By | Logged in User Name who Modified the record      |
+| Changes     | Details of changes made                          |
+
+### Add a new Property
+
+1.  Click on Admin
+
+2.  Under Procurement
+
+3.  Click on Procurement Property Menu
+
+4.  Landing Page will display a list of existing Property
+
+5.  Click on Select Actions
+
+6.  Click on New Procurement Property
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image20-1.png" style="width:4.875in;height:1.85in" />
+
+7.  Following screen shall be displayed
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image21-1.png" style="width:4.875in;height:1.38333in" />
+
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Fields</strong></th>
+<th style="text-align: center;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Property Name</td>
+<td><ul>
+<li><p>Text input with validation for uniqueness and naming conventions</p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Property Type</td>
+<td><ul>
+<li><p>Dropdown selection (String, Integer, Long, Boolean, etc.) </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Property Group</td>
+<td><ul>
+<li><p>Dropdown populated from existing property groups </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Module Type</td>
+<td><ul>
+<li><p>Dropdown selection from available procurement modules (Requested Item, Purchase Order, Purchase Order Line Item, Receiving Slip, Receiving Slip Line, Transfer Order)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Property Style</td>
+<td><ul>
+<li><p>Dropdown for display style configuration (Short Text, Link, Drop Down, Check Box, Cost, Text Editor)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td>UI Order</td>
+<td><ul>
+<li><p>Numeric field for display sequence control </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Is Visible</td>
+<td><ul>
+<li><p>Checkbox to control property visibility in user interfaces </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Is Mandatory</td>
+<td><ul>
+<li><p>Checkbox to enforce required field validation </p></li>
+</ul></td>
+</tr>
+<tr>
+<td>Is Multiple</td>
+<td><ul>
+<li><p>Checkbox to enable multiple value selection</p></li>
+<li><p>Only applicable for Type Link</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+8.  Click on Add to save the Property
+
+9.  The record will appear on the property group list view
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image20-1.png" style="width:4.875in;height:1.85in" />
+
+## Delete a new Property
+
+1.  Select the record to be deleted
+
+2.  Click on Select Actions
+
+3.  Click on Delete
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image22-1.png" style="width:4.875in;height:1.875in" />
+
+4.  A confirmation pop-up shall be displayed
+
+<img src="C:\Docs\mdx_format\media\Procurement/media/image23-1.png" style="width:4.875in;height:1.83333in" />
+
+5.  Type deleted and click on Delete to delete the group
+
+6.  Click on Cancel to abort the delete operation

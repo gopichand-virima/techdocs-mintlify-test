@@ -1,0 +1,185 @@
+# CMDB Properties
+
+# Overview
+
+The **CMDB Properties** feature in Virima enables administrators to define and manage the descriptive attributes of Configuration Items (CIs). These properties act as metadata that capture technical, business, and operational details of assets, supporting ITSM processes such as change management, incident resolution, and service impact analysis.
+
+Each property can be grouped, typed, and styled to align with organizational standards, ensuring consistency across the CMDB. By using CMDB Properties, IT teams gain a structured and reliable way to categorize, track, and filter configuration data—improving visibility, accuracy, and integration with broader IT service management activities.
+
+# CMDB (Configuration Management System)
+
+## Managing CMDB Properties in Virima
+
+- Go to **Admin \> SACM \> CMDB Properties** to access the list of all defined properties.
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image1-1.jpg" style="width:4.875in;height:2.36667in" />
+
+## Adding a New CMDB Property
+
+1.  Click the option to **Add** a new property (usually a button or link in the CMDB Properties window).
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image2-1.jpg" style="width:4.875in;height:2.025in" />
+
+2.  Fill out the form with the following **key elements**:
+
+    - **Property Name:** Name of the field (e.g., Location, Owner).
+
+    - **Property Group:** Category (e.g., Life Cycle Info, Network Info).
+
+    - **Property Type:** Data format (String, Date, Integer).
+
+    - **Property Order:** Determines display order (lower numbers appear higher).
+
+    - **Is Integrity:** Mark as critical for CI accuracy if needed.
+
+    - **Is Main:** Show in the main CI view if checked.
+
+    - **Is Mandatory:** Must be filled before saving.
+
+    - **Is Private:** Visible only to specific users/roles.
+
+    - **All Blueprints / Blueprints:** Link to specific or all blueprints (types of configuration templates).
+
+3.  Click **Add** to save the new property.
+
+## Editing an Existing CMDB Property
+
+1.  In the **CMDB Properties** list, click anywhere on the row of the property you want to edit (e.g., “Recycle Date” or “Deployment ID”).
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image3-1.jpg" style="width:4.875in;height:2.325in" />
+
+2.  A new window or dialog will open, showing all details of the property.
+
+3.  Make the necessary changes to fields like Property Name, Group, Type, Order, or manage linked blueprints and visibility.
+
+4.  Click **Save** to update the record.
+
+## Deleting a CMDB Property
+
+1.  In the **CMDB Properties** list view, click the row of the property you want to delete.
+
+2.  Open the **Select Actions** dropdown (top right of the screen).
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image4-1.jpg" style="width:4.875in;height:2.41667in" />
+
+3.  Select **Delete**.
+
+4.  Confirm the action in the prompt (click **OK** or **Continue**).
+
+## Importing CMDB Properties
+
+### 1. Prepare Your Import File
+
+- Use **CSV or Excel** format.
+
+- Each row = one CMDB property.
+
+- Include columns for:
+
+  - **Property Name**
+
+  - **Property Group**
+
+  - **Property Type** (e.g., String, Date, Integer)
+
+  - **Property Order**
+
+  - **Flags** (Is Main, Is Private, Is Mandatory, etc.)
+
+  - **Blueprints** (if applicable)
+
+### 2. Start the Import Process
+
+- Go to the **CMDB Properties** window.
+
+- From the **Select Actions** dropdown, choose **Import**.
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image5-1.jpg" style="width:4.875in;height:0.85833in" />
+
+- A dialog box or upload window will appear.
+
+### 3. Upload Your File
+
+- Select and upload your prepared file.
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image6-1.jpg" style="width:4.875in;height:1.78333in" />
+
+- The system may preview the data or validate the format.
+
+### 4. Review and Confirm
+
+- Check that the data looks correct in the preview.
+
+- Click **Import** or **Submit** to process the records.
+
+### 5. Results and Error Handling
+
+- Properties are added to the CMDB property list.
+
+- If there are errors (like missing required fields), they will be flagged for your review.
+
+## CMDB Property Detail & Edit View
+
+### 1. Viewing Property Details
+
+When you click on a specific CMDB property (e.g., PTD000448), a detailed view opens with two main panels:
+
+- **Primary Details Panel (Left):**
+
+  - Shows timestamps: **Created On** and **Last Modified On**
+
+  - Displays user info: **Created By** and **Last Modified By**
+
+- **Details Tab (Right):**
+
+  - Displays all current configuration for the selected property, including:
+
+    - **Property Type** (e.g., String)
+
+    - **Property Group**
+
+    - **Order**
+
+    - **Flags** (Main, Mandatory, Private)
+
+    - **Associated Blueprints**
+
+<img src="C:\Docs\mdx_format\media\CMDB_Properties/media/image7-1.jpg" style="width:4.875in;height:2.375in" />
+
+### 2. Editing the Property
+
+- The screen is **editable**—you can directly update:
+
+  - **Property Name, Group, or Order**
+
+  - Toggle checkboxes (e.g., **Is Integrity, Is Mandatory, Is Private**)
+
+  - Add or remove **Blueprints**
+
+- After making changes, click the **Save** button at the top-right to apply updates.
+
+### 3. Additional Tabs Available
+
+Besides the Details tab, you can switch to:
+
+- **Tasks:** Add related tasks or actions
+
+- **Comments:** Leave notes or messages
+
+- **Attachments:** Upload files/documents
+
+- **History:** Track all changes made to this property over time (audit trail)
+
+**History Tab in CMDB Property Detail & Edit View**
+
+The History tab provides a comprehensive audit trail for each CMDB Property. It allows you to:
+
+- **Track all changes** made to a property, including what was changed, when, and by whom.
+
+- **See the type of operation** (e.g., Add, Edit) performed on the property.
+
+- **View timestamps** for each modification (Modified On).
+
+- **Identify the user** who made each change (Modified By).
+
+- **Review detailed change logs** showing field names and the old vs. new values (Changes column).

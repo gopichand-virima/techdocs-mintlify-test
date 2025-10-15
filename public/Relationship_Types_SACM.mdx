@@ -1,0 +1,223 @@
+# Relationship Types SACM
+
+- [Overview](#RelationshipTypesSACM-Overview)
+
+- [Relationship Types](#RelationshipTypesSACM-RelationshipTypes)
+
+  - [Accessing Relationship Types](#RelationshipTypesSACM-AccessingRelation)
+
+  - [Creating a New Relationship Type](#RelationshipTypesSACM-CreatingaNewRelat)
+
+  - [Editing a Relationship Type](#RelationshipTypesSACM-EditingaRelations)
+
+  - [Deleting a Relationship Type](#RelationshipTypesSACM-DeletingaRelation)
+
+  - [Additional Features](#RelationshipTypesSACM-AdditionalFeature)
+
+  - [Export Relationship Types](#RelationshipTypesSACM-ExportRelationshi)
+
+  - [Import Relationship Types](#RelationshipTypesSACM-ImportRelationshi)
+
+  - [Records per Page](#RelationshipTypesSACM-RecordsperPage)
+
+  - [Auto Refresh](#RelationshipTypesSACM-AutoRefresh)
+
+  - [Personalize Columns](#RelationshipTypesSACM-PersonalizeColumn)
+
+  - [Filters](#RelationshipTypesSACM-Filters)
+
+    - [Apply and Save Filters](#RelationshipTypesSACM-ApplyandSaveFilte)
+
+    - [Apply and Delete Filters](#RelationshipTypesSACM-ApplyandDeleteFil)
+
+# Overview
+
+The **Relationship Types** feature in Virima defines how Configuration Items (CIs) connect and interact within the SACM module. By standardizing relationship labels and their visual representation, it allows organizations to accurately model dependencies, associations, and service interactions across infrastructure, applications, and services.
+
+Each relationship type includes both a **primary** and **reverse name**, ensuring clarity in how connections are displayed and interpreted. This functionality enhances **topology visualization**, improves **impact analysis**, and supports ITIL processes such as change management and configuration audits.
+
+# Relationship Types
+
+## Accessing Relationship Types
+
+- Navigate to **Admin \> SACM \> Relationship Types**.
+
+- The Relationship Types window displays all existing relationship definitions.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image1-1.jpg" style="width:4.875in;height:1.38333in" />
+
+## Creating a New Relationship Type
+
+1.  From the **Select Actions** drop-down, select **New Relationship Type**.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image2-1.jpg" style="width:4.875in;height:1.20833in" />
+
+2.  Fill in the following fields:
+
+    - **Primary Name:** Defines the relationship from Source to Target (e.g., "Depends On").
+
+    - **Reverse Name:** Defines the relationship from Target to Source (e.g., "Supports").
+
+    - **Color:** Choose a color for visual representation in topology views.
+
+    - **User Type Relation:** Check if this is a user-defined relationship.
+
+    - **Line Stroke:** Select how the line appears in diagrams (e.g., solid, dashed).
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image3-1.jpg" style="width:4.875in;height:2.675in" />
+
+3.  Click **Add** to save the new relationship type.
+
+## Editing a Relationship Type
+
+1.  In the Relationship Types window, click the record you wish to edit.
+
+2.  The details open in a dialog box.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image4-1.jpg" style="width:4.875in;height:2.63333in" />
+
+3.  Update fields as needed (names, color, stroke, etc.).
+
+4.  Click **Save** or **Add** to confirm your edits.
+
+## Deleting a Relationship Type
+
+Deletion is permanent and may impact system behavior or reporting.
+
+1.  Click the line of the relationship you want to delete.
+
+2.  From the **Select Actions** drop-down, select **Delete**.
+
+3.  If prompted, review the confirmation message and select **OK** or **Continue**.
+
+## Additional Features
+
+## Export Relationship Types
+
+1.  **Navigate to Relationship Types:**
+
+    - Go to **Admin \> SACM \> Relationship Types**.
+
+2.  **Initiate Export:**
+
+    - From the **Select Actions** drop-down list, click **Export**.
+
+3.  **Confirm Export:**
+
+    - A confirmation popup will appear:
+
+      1.  It states that an Excel spreadsheet will be generated.
+
+      2.  You’ll receive an email notification when the export is ready for download.
+
+    - Click **Continue** to proceed or **Cancel** to stop.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image5-1.jpg" style="width:3.4in;height:2.225in" />
+
+4.  **Download Exported File:**
+
+    - Once the export is complete, check your email for a notification and download link.
+
+    - Note: Export time may vary depending on data size.
+
+## Import Relationship Types
+
+1.  **Navigate to Relationship Types:**
+
+    - Go to **Admin \> SACM \> Relationship Types**.
+
+2.  **Initiate Import:**
+
+    - From the **Select Actions** drop-down list, click **Import**.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image6-1.jpg" style="width:4.875in;height:2.08333in" />
+
+3.  **Download Template:**
+
+    - In the Relationship Type Import popup, click **Click here to download the sample file** to get the template format.
+
+4.  **Prepare Import File:**
+
+    - Fill in the required fields in the template, such as **Primary Name, Reverse Name, Color**, etc.
+
+5.  **Upload File:**
+
+    - Click **Browse** to select your completed file.
+
+    - Click **Upload** to import the data.
+
+6.  **Validation:**
+
+    - Only properly formatted .xls or .xlsx files will be accepted.
+
+    - Invalid formats or missing fields may result in errors.
+
+## Records per Page
+
+1.  Click the **Records per Page** drop-down list.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image7-1.jpg" style="width:3.25in;height:0.725in" />
+
+2.  Select the number of records you want to display in the window (e.g., 100, 200, 300).
+
+3.  The list will refresh immediately to show the selected number of entries per page.
+
+## Auto Refresh
+
+1.  Click the **Auto Refresh** drop-down list.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image8-1.jpg" style="width:3.19167in;height:0.68333in" />
+
+2.  Select one of the following options: **None, 20 seconds, 40 seconds, 60 seconds**, or **Custom** (where you can specify a custom refresh time).
+
+3.  The window will automatically update at the chosen interval.
+
+## Personalize Columns
+
+1.  While viewing a record list, click the **Personalize Columns** icon.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image9-1.jpg" style="width:4.875in;height:2.75in" />
+
+2.  In the **Search for properties** field, type the name of any property you want to add or remove, then click the **Search** icon.
+
+3.  Under the **Search Results** column, review all available columns. A check mark indicates a column is already selected.
+
+4.  Under the **SELECTED ITEMS** column, see all currently selected columns. To add a column, click its name in the Search Results list; it will appear in the Selected Items list.
+
+5.  Click **Default View** to restore the default column settings.
+
+6.  Click **Clear All** to remove all selections and return to the default view.
+
+7.  Click **Save** to retain your current selections.
+
+8.  Click **Cancel** to discard any changes.
+
+## Filters
+
+### Apply and Save Filters
+
+1.  Under the column heading, click in the **Filter for Name** field.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image10-1.jpg" style="width:4.875in;height:0.88333in" />
+
+2.  Type your search text.
+
+3.  Press **Enter**. The window updates to display all matching records.
+
+4.  Click **SAVE FILTER**.
+
+5.  In the Save Filter dialog box, type a name to identify this filter, and click **Save**.
+
+6.  Repeat these steps to create and save additional filters as needed.
+
+### Apply and Delete Filters
+
+1.  In the results window, click the **Saved Filter** icon on the toolbar to open the Filters window.
+
+<img src="C:\Docs\mdx_format\media\Relationship_Types_SACM/media/image11-1.jpg" style="width:4.875in;height:1.1in" />
+
+2.  Select the filter you want to apply from the list.
+
+3.  To set a filter as the default, click **Set as Default** (only one filter can be the default).
+
+4.  To delete a filter, click the **trashcan** icon next to it.

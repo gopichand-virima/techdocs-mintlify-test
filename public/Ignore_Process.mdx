@@ -1,0 +1,163 @@
+# Ignore Process
+
+- [Overview](#IgnoreProcess-Overview)
+
+- [Purpose](#IgnoreProcess-Purpose)
+
+- [Benefits](#IgnoreProcess-Benefits)
+
+- [Ignore Process](#IgnoreProcess-IgnoreProcess)
+
+  - [Example Use Case](#IgnoreProcess-ExampleUseCase)
+
+  - [Ignore Process with Examples](#IgnoreProcess-IgnoreProcesswithExamples)
+
+    - [Before Marking a Process as Ignored](#IgnoreProcess-BeforeMarkingaProcessasIg)
+
+    - [After Adding svchost.exe to the Ignore Process List](#IgnoreProcess-AfterAddingsvchost.exetot)
+
+    - [After Deleting svchost.exe Entries from the Database](#IgnoreProcess-AfterDeletingsvchost.exeE)
+
+  - [Best Practices](#IgnoreProcess-BestPractices)
+
+# Overview
+
+The **Ignore Process Names** feature in Virima enables administrators to exclude specified software processes from being captured during automated discovery scans. This helps ensure that only relevant and critical applications are tracked, improving the accuracy and usefulness of discovery reports.
+
+# Purpose
+
+The primary objectives of the Ignore Process Names feature are to:
+
+- **Streamline Discovery Results:** Eliminate non-essential software processes from scan results.
+
+- **Improve Data Relevance:** Focus on high-impact applications and assets.
+
+- **Reduce False Positives:** Prevent background or default system processes from cluttering inventories.
+
+- **Customize Discovery Behaviour:** Tailor scanning to align with organizational software policies and priorities.
+
+# Benefits
+
+- **Targeted Discovery Scanning:** Avoid capturing unnecessary or low-impact software.
+
+- **Cleaner Reports:** Keep inventory and scan results free from irrelevant entries.
+
+- **Better Focus:** Enable IT teams to prioritize important applications and services.
+
+- **Easy Configuration:** Enter process names in a user-friendly dialog.
+
+- **Multiple Entries Supported:** Add several process names at once using a comma-separated format.
+
+# Ignore Process
+
+The **Ignore Process Names** feature allows you to exclude certain software processes from being detected during discovery scans.
+
+1.  Navigate to the **Ignore Process Names** dialog in the relevant configuration area of the Virima application.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image1-1.png" style="width:4.875in;height:1.5in" />
+
+2.  Input one or more process names to be ignored, separated by commas (e.g., notepad.exe, calc.exe).
+
+3.  **Save or Cancel:**
+
+    - **Add:** Saves the entered process names. These will be excluded from future discovery scan results.
+
+    - **Cancel:** Closes the dialog without saving changes.
+
+Multiple names should be comma-separated.
+
+## Example Use Case
+
+Exclude known, low-priority processes such as built-in system tools (e.g., notepad.exe) to keep discovery reports focused on critical business applications.
+
+## Ignore Process with Examples
+
+This section demonstrates how ignoring a process (for example, svchost.exe) affects discovery results in Virima.
+
+### Before Marking a Process as Ignored
+
+The following screenshots show the CMDB records when svchost.exe is **not ignored**.
+
+- **Relationships** – The svchost.exe software instance is linked as a target to the Windows Host (e.g., *VTL00053*).
+
+- **IP Connections** – The process svchost.exe is included in IP connection results.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image2-1.png" style="width:4.875in;height:2.50833in" />
+
+- **Software Instance** – A software instance is created for svchost.exe.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image3-1.png" style="width:4.875in;height:2.2in" />
+
+- **Processes** – The svchost.exe process is captured during the scan.
+
+### After Adding svchost.exe to the Ignore Process List
+
+To ignore a process:
+
+1.  Go to **Admin → Ignore Process Module**.
+
+2.  Add the process name (e.g., svchost.exe).
+
+Once ignored:
+
+- The system **skips creating a software instance** for the process.
+
+- After rescanning and syncing to the CMDB, svchost.exe no longer appears as a software instance.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image4-1.png" style="width:4.875in;height:1.95in" />
+
+However, the following are still discovered:
+
+- IP connections associated with the process
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image5-1.png" style="width:4.875in;height:2.675in" />
+
+- Listening processes
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image6-1.png" style="width:4.875in;height:2.88333in" />
+
+- Relationships
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image7-1.png" style="width:4.875in;height:2.45833in" />
+
+If relationships were created before the process was ignored, they remain intact. Ignoring a process does not automatically remove existing relationships.
+
+### After Deleting svchost.exe Entries from the Database
+
+When svchost.exe entries are removed from the:
+
+- **Discovered Items**
+
+- **Relationship Table**
+
+- **IP Connection Table**
+
+The results are as follows:
+
+- **IP Connections** – Continue to be discovered.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image5-1.png" style="width:4.875in;height:2.675in" />
+
+- **Software Instance** – No longer discovered.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image8-1.png" style="width:4.875in;height:2.24167in" />
+
+- **Relationships** – No new relationships created.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image9-1.png" style="width:4.875in;height:1.925in" />
+
+- **Processes** – Still appear in the system.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image10-1.png" style="width:4.875in;height:2.4in" />
+
+- **Listening Processes** – Still appear in the system.
+
+<img src="C:\Docs\mdx_format\media\Ignore_Process/media/image6-1.png" style="width:4.875in;height:2.88333in" />
+
+## Best Practices
+
+- Use clear, specific process names to avoid unintentionally excluding important applications.
+
+- Regularly review and update the ignore list to reflect changes in your environment.
+
+- Document the rationale for each ignored process for audit and troubleshooting purposes.

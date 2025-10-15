@@ -1,0 +1,563 @@
+# Blueprints
+
+- [Overview](#Blueprints-Overview)
+
+- [Blueprints](#Blueprints-Blueprints)
+
+  - [Accessing Blueprints](#Blueprints-AccessingBlueprints)
+
+  - [Adding a New Blueprint](#Blueprints-AddingaNewBlueprint)
+
+    - [Basic Details.](#Blueprints-BasicDetails.)
+
+    - [Property Configuration](#Blueprints-PropertyConfiguration)
+
+      - [Property List](#Blueprints-PropertyList)
+
+    - [Blueprint Fields](#Blueprints-BlueprintFields)
+
+  - [Viewing a New Blueprint](#Blueprints-ViewingaNewBlueprint)
+
+    - [Primary Details](#Blueprints-PrimaryDetails)
+
+    - [Configure SLA (If Applicable)](#Blueprints-ConfigureSLA(IfApplicable))
+
+    - [SLA Escalation Rule Columns](#Blueprints-SLAEscalationRuleColumns)
+
+    - [Deleting a Blueprint](#Blueprints-DeletingaBlueprint)
+
+  - [Editing a Blueprint](#Blueprints-EditingaBlueprint)
+
+  - [Deleting a Blueprint](#Blueprints-DeletingaBlueprint.1)
+
+  - [Exporting a Blueprint](#Blueprints-ExportingaBlueprint)
+
+    - [Customize Record Management Tabs](#Blueprints-CustomizeRecordManagementTab)
+
+    - [Integrate with Other Modules](#Blueprints-IntegratewithOtherModules)
+
+      - [Records per Page](#Blueprints-RecordsperPage)
+
+      - [Auto Refresh](#Blueprints-AutoRefresh)
+
+      - [Personalize Columns](#Blueprints-PersonalizeColumns)
+
+      - [Manage Filters](#Blueprints-ManageFilters)
+
+        - [Apply & Save a Filter](#Blueprints-Apply&SaveaFilter)
+
+        - [Apply or Delete a Saved Filter](#Blueprints-ApplyorDeleteaSavedFilter)
+
+    - [Onboard CIs Using the Blueprint](#Blueprints-OnboardCIsUsingtheBlueprint)
+
+# Overview
+
+Blueprints in Virima provide a structured and reusable framework for modeling IT assets and their relationships within the Configuration Management Database (CMDB). Acting as templates, blueprints define the key attributes, properties, and interdependencies of different Configuration Items (CIs) such as servers, applications, network devices, or databases.
+
+They ensure consistency and accuracy in CI representation by standardizing asset fields, enforcing integrity checks, and managing metadata. Blueprints also enable organizations to map relationships across infrastructure components, apply governance policies, and maintain a uniform approach to asset modeling.
+
+By leveraging blueprints, IT teams can automate asset onboarding, streamline CI classification, and enhance the overall quality of CMDB data—supporting better decision-making, operational efficiency, and service management.
+
+# Blueprints
+
+## Accessing Blueprints
+
+- Go to **Admin \> SACM \> Blueprints**.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image1-1.png" style="width:4.875in;height:1.63333in" />
+
+- The blueprint page opens with a list of configured blueprints.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image2-1.png" style="width:4.875in;height:2.2in" />
+
+- Column Details:
+
+| **Column Name** | **Description**                                                              |
+|-----------------|------------------------------------------------------------------------------|
+| Name            | The unique name for your blueprint (e.g., Software BLP, Linux Server BLP).   |
+| Is Component    | Indicates if the blueprint is a component CI (can be used within other CIs). |
+| Created On      | The date the blueprint was created.                                          |
+| Created By      | The user who created the blueprint.                                          |
+
+## Adding a New Blueprint
+
+- Click **Add** to start creating a new blueprint.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image3-1.png" style="width:4.875in;height:2.575in" />
+
+### Basic Details.
+
+- **Name**: The unique name for your blueprint (e.g., *Software BLP, Linux Server BLP*).
+
+- **Is Component (Optional)**:
+
+  - Check this if this CI can be used as a component within other CIs (like Installed Software, Network Adapters).
+
+  - If enabled, it **cannot** be used as the main blueprint for any CI.
+
+- **Enable Versioning (Optional)**:
+
+  - Allows you to track changes made to any CI created using this blueprint.
+
+  - Each update is stored as a new version, preserving a full history of changes.
+
+- **Is Integrity Check Needed (Optional)**:
+
+  - Ensures CI integrity is verified during rediscovery.
+
+- **Includes Blueprint**:
+
+  - Select a base blueprint if you want to inherit properties from another existing blueprint (commonly *Base*).
+
+  - Click **Update** to update the properties,
+
+  - In **Includes Blueprint**, click the field to open the **Includes Blueprint** picker.
+
+  - Find the blueprint:
+
+    - Use the search bar, **or**
+
+    - Click **Advanced Search** and add filters (choose **Field → Operator → Value**), then **Save**.
+
+  - Check the blueprint you want (e.g., **Base**) and click **Save** to close the picker.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image4-1.png" style="width:4.875in;height:2.04167in" />
+
+- Configure Property list.
+
+### Property Configuration
+
+#### Property List
+
+Properties define the attributes that belong to this blueprint.
+
+- If selecting *Base* as the Includes Blueprint, it will automatically inherit basic/common properties (Asset Name, Type, Status, Asset ID, etc.).
+
+- Additional properties can be added as needed (e.g., OS Version, Build Number, CPU Speed).
+
+- Click **Update** to update the property.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image5-1.png" style="width:4.875in;height:2.51667in" />
+
+- Select the property names and click **Save** to update the property list.
+
+Key property categories:
+
+- **Mandatory Properties**\*: Properties required for a CI to be created (e.g., Serial Number, MAC Address). If missing, the record will not be added as a CI.
+
+  - Click **Add** next to **Mandatory Properties**.  
+    The **Mandatory Properties** dialog opens.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+      - Click ADD/OR to add more conditions.
+
+    - Click **Run** and **Add** the properties from the list.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image6-1.png" style="width:4.875in;height:1.80833in" />
+
+- **Integrity Check Properties**: Properties used for CI integrity validation (e.g., Serial Number, Description).
+
+  - Click **Add** next to **Integrity Check** **Properties**.  
+    The **Integrity Check** **Properties** dialog opens.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+    - Click **Run** and **Add** the properties from the list.
+
+      - Click ADD/OR to add more conditions.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image7-1.png" style="width:4.875in;height:1.86667in" />
+
+- **Main Properties**: Primary identifiers for the CI (e.g., Serial Number, Manufacturer).
+
+  - Click **Add** next to **Main Properties**.  
+    The **Main Properties** dialog opens.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+    - Click **Run** and **Add** the properties from the list.
+
+      - Click ADD/OR to add more conditions.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image8-1.png" style="width:4.875in;height:1.85in" />
+
+- **Private Properties (Optional)**: Hidden from general view, visible only to specified roles.
+
+  - Click **Add** next to **Private Properties**.  
+    The **Private Properties** dialog opens.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+    - Click **Run** and **Add** the properties from the list.
+
+      - Click ADD/OR to add more conditions.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image9-1.png" style="width:4.875in;height:1.9in" />
+
+- **Private Property Visibility (Optional)**: Defines who can view private properties (e.g., Project Manager).
+
+  - Click **Add** next to **Private Property Visibility**.  
+    The **Private Property Visibility** dialog opens.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+    - Click **Run** and **Add** the properties from the list.
+
+      - Click ADD/OR to add more conditions.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image10-1.png" style="width:4.875in;height:1.84167in" />
+
+- **Primary Property List:** Specific set of properties defined within a blueprint that serve as the main correlator or identifier properties for Configuration Items (CIs) created from that blueprint.
+
+  - Click **Add** next to **Primary Property List**.  
+    The **Primary Property List** dialog opens.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+    - Click **Run** and **Add** the properties from the list.
+
+      - Click ADD/OR to add more conditions.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image11-1.png" style="width:4.875in;height:1.875in" />
+
+- **Related Possible Components (Optional)**: Define other components that can be linked (e.g., Azure Subnet, Software Instance).
+
+- **Second Level Support / Third Level Support (Optional)**: Assign responsible teams or individuals for CI support.
+
+  - Click **Add** next to **Second Level Support / Third Level Support**  
+    The **Second Level Support / Third Level Support** dialog opens.
+
+    - **User** (default): Assign a single person as the escalation contact.
+
+    - **Group**: Assign a team or distribution group if escalation should go to multiple people or a queue.
+
+  - Start typing in the search box to see matching properties in **Search Results**.
+
+  - **Advanced Search (optional)**
+
+    - Click **Advanced Search** to filter the property list.
+
+    - Choose a **Field**, an **Operator** (e.g., equals / contains), and a **Value**.
+
+    - Click **Run** and **Add** the properties from the list.
+
+      - Click ADD/OR to add more conditions.
+
+  - Click **Save** to confirm your selections or **Cancel** to discard.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image12-1.png" style="width:4.875in;height:1.63333in" />
+
+- **Tags (Optional)**: Add tags for easy search/classification (e.g., Finance, Critical, Cloud).
+
+- **Blueprint Icon (Optional)**: Visual icon to represent the CI type.
+
+  - Click **Add** next to **Blueprint Icon**  
+    The **Blueprint Icon** dialog opens.
+
+  - Click **Browse** and select the file
+
+  - Click **Ok**.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image13-1.png" style="width:4.875in;height:1.71667in" />
+
+- **Workflow (Optional)**: Link a predefined workflow if approvals or status changes are required.
+
+- **Configure Main Page for CI (Optional)**: Customize the layout for how this CI type will appear.
+
+  - Select the main CI from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image14.png" style="width:4.875in;height:0.86667in" />
+
+If the user clicks **Add** without entering mandatory fields, the system displays an error.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image15-1.png" style="width:4.875in;height:1.19167in" />
+
+### Blueprint Fields
+
+| **Field**                                 | **Description**                                                                                         |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| **Name**                                  | Name given to the blueprint based on the CI. Editable.                                                  |
+| **Is Component**                          | Defines if the blueprint is a component CI. If selected, Integrity Check Properties must be configured. |
+| **Enable Versioning**                     | All CIs created from this blueprint will be versioned.                                                  |
+| **Is Integrity Check Needed**             | Verifies required properties are present. Missing properties trigger a notification.                    |
+| **Includes Blueprint**                    | Associated blueprint properties to include.                                                             |
+| **Property List**                         | Attributes defined in the blueprint (e.g., IP Address, Hostname).                                       |
+| **Mandatory Properties**                  | Required to create a CI.                                                                                |
+| **Integrity Check Properties**            | Must exist on the CI. Required if “Is Component” is selected.                                           |
+| **Main Properties**                       | Properties shown in the main CI listing.                                                                |
+| **Primary Property List**                 | Specific set of properties defined within a blueprint that serve as the main correlator.                |
+| **Private Properties**                    | Marked as private, visible only to specified roles.                                                     |
+| **Private Property Visibility**           | Roles permitted to view private properties.                                                             |
+| **Primary Property List for Correlation** | Correlator properties for this blueprint (applies when Is Component = true).                            |
+| **Related Possible Components**           | Components available to include in a Parent CI.                                                         |
+| **Second Level Support**                  | User/group for second level escalations.                                                                |
+| **Third Level Support**                   | User/group for third level escalations.                                                                 |
+| **Workflow**                              | Business rules and processes associated with the CI.                                                    |
+| **Tags**                                  | Tags applied to the CI for easier discovery.                                                            |
+| **Configure Main Page for CI**            | Defines tabs and sections on the CI’s main page.                                                        |
+
+## **Viewing a New Blueprint**
+
+Once you have added a blueprint, Review and Validate the Blueprint.
+
+- Double-check all configured properties, mandatory fields, and inheritance settings.
+
+- Ensure that integrity check properties are set if the blueprint is marked as a component.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image16-1.png" style="width:4.875in;height:2.5in" /><img src="C:\Docs\mdx_format\media\Blueprints/media/image17-1.png" style="width:4.875in;height:2.5in" />
+
+### Primary Details
+
+**Update Picture Icon:** The Update Picture icon allows you to change or upload a new image representing the blueprint. Click this icon to browse and select a new image file.
+
+**Created On**: The date the blueprint was created.
+
+**Last Modified On**: The date the blueprint was last modified.
+
+**Created By**: The user who created the blueprint.
+
+**Last Modified By**: The user who last modified the blueprint.
+
+### **Configure SLA (If Applicable)**
+
+Use these steps to set up response and resolution times for any CI (Incident, Request, Change or Problem) whose Root‑Cause blueprint’s SLA should apply.
+
+- Open the blueprint and switch to the **SLA** tab.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image18-1.png" style="width:4.875in;height:2.46667in" />
+
+- Set response and resolution targets for incidents, requests, changes, or problems related to this CI type.
+
+  - **Response Time**: Enter the maximum elapsed time before a first response must occur.
+
+  - **Resolution Time**: Enter the total time allowed for full resolution. *Note*: this value must be at least as large as the sum of your response time plus any support‑level response windows.
+
+  - In the **Support Level** fields, specify how long each tier (1st, 2nd, 3rd, etc.) has to respond.
+
+- Define escalation rules, support level response windows, and notification recipients.
+
+  - For each rule, you’ll specify when it fires, how long to wait, and who gets notified:
+
+    - **First column**: Choose whether the escalation action fires **Before** or **After** the specified delay.
+
+    - **Second column**: Enter the delay amount (hours/minutes) before notifications go out.
+
+    - **Third column**: Click **Add** (for a new recipient list) or **Update** (to edit an existing one), then pick users, roles, groups or departments who should be alerted.
+
+### SLA Escalation Rule Columns
+
+| **When**      | **Delay**                   | **Notification Recipients**                                                              |
+|---------------|-----------------------------|------------------------------------------------------------------------------------------|
+| Before/After  | Time duration (e.g. 30 min) | Users, roles, groups, or departments (select one or many; use Add/Update to modify list) |
+
+- Save your SLA configuration to activate it for the blueprint.
+
+### Deleting a Blueprint
+
+- From the **Select Actions** dropdown, choose **Delete**.
+
+- If prompted, Type “**Delete**” and confirm the deletion.
+
+## **Editing a Blueprint**
+
+1.  Go to **Admin \> SACM \> Blueprints** to see all available blueprints.
+
+2.  Select the blueprint you want to modify.
+
+3.  Click the line containing that record—this will open the blueprint’s details in a dialog or pane.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image19-1.png" style="width:4.875in;height:2.125in" />
+
+4.  Update any fields as needed (e.g., properties, tags, workflow, support levels).
+
+5.  You can also:
+
+    1.  **Add Tasks**: Assign and track tasks related to the blueprint.
+
+    2.  **Add Comments**: Leave notes or updates for collaboration and record-keeping.
+
+    3.  **Attach Files**: Upload supporting documents, configuration files, or screenshots.
+
+    4.  **View History**: Review the audit trail of changes made to the blueprint.
+
+6.  Click **Save** to apply your modifications.
+
+## **Deleting a Blueprint**
+
+To remove a blueprint,
+
+- Click the line having the item you wish to delete.
+
+- From the **Select Actions** dropdown, choose **Delete**.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image20-1.png" style="width:4.875in;height:2.88333in" />
+
+- If prompted, Type “**Delete**” and confirm the deletion.
+
+## **Exporting a Blueprint**
+
+To export a blueprint,
+
+- Click the line having the item you wish to export.
+
+- From the **Select Actions** dropdown, choose **Export**.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image21-1.png" style="width:4.875in;height:1.33333in" />
+
+- The complete information will be generated to an Excel spreadsheet.  
+  You will receive an email when it is ready to be downloaded.
+
+- Click **Continue.**
+
+### **Customize Record Management Tabs**
+
+- Use the Record Management Tabs to organize how CI records are displayed and managed.
+
+> <img src="C:\Docs\mdx_format\media\Blueprints/media/image22-1.png" style="width:4.875in;height:1.55in" />
+
+- **Tasks**  
+  Lists and manages tasks associated with the CI. Users can create new tasks, assign ownership, and track progress.
+
+- **Comments**  
+  Provides a space for administrators or users to add notes, updates, or clarifications related to the CI. This helps in collaboration and record-keeping.
+
+- **Attachments**  
+  Allows uploading and managing supporting files (e.g., documents, configuration files, reports, or screenshots) linked to the CI.
+
+- **History**  
+  Displays a detailed audit trail of all changes made to the CI. Each entry shows the action performed, the date and time of modification, the user who made the change, and the specific attributes that were updated.
+
+<!-- -->
+
+- Refer the [Asset Tab Details](https://virima.atlassian.net/wiki/spaces/PM/pages/231112748/Asset+tab+Details?atlOrigin=eyJpIjoiYjBiMWM3NGJmYWJlNDAwZWFmYTExMjZmOTk1MzYwNDYiLCJwIjoiYyJ9) for more information.
+
+### **Integrate with Other Modules**
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image23.png" style="width:4.875in;height:1.01667in" />
+
+#### Records per Page
+
+Click the drop-down list and select the number of records displayed in this window.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image24-1.png" style="width:4.16667in;height:0.94167in" />
+
+| **Control**                   | **Description**                                                                                                                                                                  |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Records per Page dropdown** | Click the drop-down and choose how many records to display—only values in the hundreds (e.g., 100, 200, 300). The list refreshes immediately to show that many entries per page. |
+
+#### Auto Refresh
+
+Use this function to update the window at a specific interval of time.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image25-1.gif" style="width:3.9in;height:0.875in" />
+
+- Click the **Auto Refresh** drop-down list and select from one of the following: **None, 20 seconds, 40 seconds, 60 seconds**, or **Custom** (and specify a custom refresh time).
+
+#### Personalize Columns
+
+Use this function to personalize the columns displayed in the record window:
+
+1.  While viewing a record list, click the **Personalize Columns** icon.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image26-1.gif" style="width:4.875in;height:1.25in" />
+
+2.  In the **Search for properties** field, enter the name of a property and click the **Search** icon.
+
+3.  The **Search Results** column displays all available columns, marked with a check if selected.
+
+4.  The **Selected Items** column shows all currently selected columns. To add a column, click its name in the Search Results list; it will then appear in the Selected Items list.
+
+5.  Click **Default View** to restore the default settings.
+
+6.  Click **Clear All** to remove all selections and revert to the default view.
+
+7.  Click **Save** to keep the current selections.
+
+8.  Click **Cancel** to discard any changes.
+
+#### Manage Filters
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image27-1.png" style="width:4.875in;height:1.9in" />
+
+Filters let you narrow down a large data set to just the records you need. Filters are specific to each user.
+
+##### Apply & Save a Filter
+
+1.  Under the column header, click in the **Filter** field.
+
+2.  Type your search text and press **Enter**. The list refreshes to show matching records.
+
+3.  Click Save Filter.
+
+4.  In the dialog, give your filter a name and click **Save**.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image28-1.png" style="width:4.875in;height:0.86667in" />
+
+You can repeat these steps to create multiple saved filters.
+
+##### Apply or Delete a Saved Filter
+
+1.  Click the **Saved Filter** icon on the toolbar to open the Filters list.
+
+2.  Select a filter to apply it to your data.
+
+<img src="C:\Docs\mdx_format\media\Blueprints/media/image29-1.png" style="width:4.875in;height:1.05833in" />
+
+3.  *(Optional)* Click **Set as Default** to make it the filter that loads automatically.
+
+4.  To remove a saved filter, click its **Delete** icon.
+
+### **Onboard CIs Using the Blueprint**
+
+- Begin creating or importing Configuration Items (CIs) based on the new blueprint.
+
+- Ensure all mandatory and integrity check properties are provided during CI creation.

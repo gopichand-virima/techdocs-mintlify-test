@@ -1,0 +1,353 @@
+# IPAM Networks
+
+# Overview
+
+The **IP Address Management (IPAM)** functionality in Virima provides a centralized approach to planning, tracking, and managing IP addresses, subnets, and associated assets across the network. By integrating with Infoblox, the platform enables automated updates of IP data, eliminating manual effort and reducing reliance on separate IP management tools.
+
+With IPAM, administrators gain visibility into subnets, address allocations, host associations, and linked hardware or software, ensuring accurate records and streamlined configuration management. This capability strengthens network security, improves efficiency, and optimizes resource utilization by maintaining a clear view of IP usage and topology.
+
+# IPAM Procedure
+
+The following steps outline the procedure for performing IP Address Management (IPAM) using Infoblox:
+
+1.  **Infoblox Configuration**  
+    Configure Infoblox on the system to enable integration with IPAM for effective management of IP address resources.
+
+    - Navigate to **Admin \> Integration \> Infoblox Configuration**.
+
+    - Set up the necessary Infoblox credentials: username, password, and host IP address.
+
+    - Associate the credentials with the appropriate client in the system.
+
+2.  **IPAM**  
+    After configuring Infoblox, use the IPAM functionality to manage and track IP addresses, subnets, and related network details.
+
+    - Track the total number of subnets and IP addresses in each subnet.
+
+    - Monitor and associate IP addresses with host names, hardware, and software information.
+
+    - Periodically re-import resource definitions and configurations from Infoblox to maintain an accurate network inventory.
+
+# Infoblox Configuration
+
+Navigate to **Admin \> Integration \> Infoblox Configuration**
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image1-1.png" style="width:4.875in;height:1.60833in" />
+
+You have two options for adding Infoblox credentials. Please choose one of the following methods:
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image2-1.png" style="width:4.875in;height:1.125in" />
+
+**Option 1: Add New Infoblox Credential**
+
+Manually add a new Infoblox credential for authenticating the connection between the system and Infoblox. Enter the Infoblox username, password, host IP, and select the applicable client.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image3-1.gif" style="width:4.875in;height:1.95833in" />
+
+1.  In the **Admin** section, navigate to **Integration \> Infoblox Configuration**.
+
+2.  In the Infoblox Credential dialog box, click **Add New Infoblox Credential**.
+
+3.  Enter the following details:
+
+    1.  **Username:** Your Infoblox username.
+
+    2.  **Password:** Your password.
+
+    3.  **Host:** The IP address of the Infoblox machine.
+
+    4.  **Client:** Select the client from the drop-down list.
+
+4.  Click **Save** to complete the setup.
+
+**Option 2: Auto Pick Credential from Discovery Application**
+
+Automatically pick credentials from the Discovery application, streamlining the process. The system will fill in the required details, including host IP and client information.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image4-1.gif" style="width:4.875in;height:1.95in" />
+
+1.  In the **Admin** section, navigate to **Integration \> Infoblox Configuration**.
+
+2.  In the Infoblox Credential dialog box, select **Auto pick credential from Discovery application**.
+
+3.  Enter the following details:
+
+    - **Host:** The IP address of the Infoblox machine.
+
+    - **Client:** Select the client from the drop-down list.
+
+4.  Click **Save**.
+
+# IPAM (IP Address Management)
+
+1.  In the navigation pane, select **Discovery Scan \> IPAM Networks**.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image5-1.gif" style="width:4.875in;height:2.025in" />
+
+2.  The IPAM window will display the current status of IP addresses and subnets.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image6-1.gif" style="width:4.875in;height:2.125in" />
+
+# IPAM Functions Overview
+
+## Scan Function
+
+The Scan function allows monitoring of devices and network configurations within the environment.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image7-1.gif" style="width:4.875in;height:2.00833in" />
+
+There are two main sections under the Scan function:
+
+- Status Update
+
+- Regular Scan
+
+### Status Update
+
+The **Status Update** section checks the status of devices, typically triggered during a scan.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image8-1.gif" style="width:4.875in;height:1.38333in" />
+
+The available settings are:
+
+- **Probe:** Choose the type of scan, such as **Ping Scan**.
+
+- **Client:** Select the client from the list (ensure the client is operational).
+
+- **IP Address:** Specify the IP address or range to scan (e.g., **192.168.34.0/24**).
+
+- **Update Type:** Choose between **Immediate** or **Scheduled** update.
+
+  - **Immediate:** The scan starts right away.
+
+  - **Scheduled:** The scan runs at a specified time.
+
+### Regular Scan
+
+The **Regular Scan** section conducts a full network scan and manages the IP address ranges to include or exclude from the scan.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image9-1.gif" style="width:4.875in;height:1.875in" />
+
+Fields and settings for configuring a **Regular Scan**:
+
+- **Name:** Provide a name for the scan.
+
+- **Probe:** Select the type of probe.
+
+- **Client:** Select the client to scan (ensure the client is operational).
+
+- **IP Range:** Specify the IP range to scan (e.g., **192.168.34.0/24**).
+
+  - **Exclude IP Range:** Define specific IP ranges to exclude from the scan.
+
+  - The maximum number of IPs allowed per scan is 1024 (Subnet /22). You can enter IPs in various formats:
+
+    - Single or multiple IPs from different subnets: e.g., **192.168.48.1 192.168.49.2**.
+
+    - Multiple IPs from the same subnet: e.g., **192.168.48.1,2,3,4**.
+
+    - A range of IPs in the same subnet: e.g., **192.168.48.1-50**.
+
+    - A single subnet: e.g., **192.168.48.0/22**.
+
+    - Multiple subnets: e.g., **192.168.48.0/23 192.168.49.0/23**.
+
+    - Combination of subnet and IPs: e.g., **192.168.48.0/23 192.168.48.1**.
+
+  - The total number of IPs should not exceed 1024.
+
+- **Location (Optional):** Specify the scan location.
+
+- **Scan Type:** Choose between **Immediate** or **Scheduled** scan.
+
+  - **Immediate:** The scan starts immediately.
+
+  - **Scheduled:** The scan runs at a scheduled time.
+
+- **Send Scan Report To (Optional):** Provide an email address for receiving scan results.
+
+After the scan, details will appear in **Recent Scans**. Upon a successful scan, results will move to **Discovered Items** for further management.
+
+# Sync (Instant and Scheduled)
+
+Use this function to plan, track, and manage information related to IP addresses in the monitored network.
+
+1.  In the **IPAM Networks** window, click **Sync**. The **Sync from Infoblox** window will display.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image10-1.gif" style="width:4.875in;height:1.45in" />
+
+2.  **Select Sync Type**:
+
+    - **Instant Sync:** Click to immediately import records from the Infoblox server.
+
+    - **Schedule Sync:** Choose this option to import records at a scheduled time.
+
+      - In the **Schedule Report Frequency** drop-down list, select the desired frequency.
+
+      - Select one or more options based on the schedule: **Second**, **Minute**, **Hour**, **Day**, **Month**, **Weekday**.
+
+      - Click **Add** to confirm the scheduling details.
+
+3.  Click **Sync Now** to execute the operation and sync records immediately.
+
+# View & Edit a Network
+
+## Details Tab
+
+Navigate to the IPAM window and select any network record to view, such as the network 192.168.48.0/24.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image11-1.gif" style="width:4.875in;height:2.3in" />
+
+- The Details Tab provides default and static information about the selected network, which is generally not editable. The fields displayed include:
+
+  - **Location:** The physical or logical location of the network (e.g., Virima Technologies Bangalore).
+
+  - **Network View:** The view type for the network (e.g., default).
+
+  - **\_ref:** The reference identifier for the network record (typically blank or system-generated).
+
+  - **Comment:** A description for the network (e.g., Virima Dev Network).
+
+  - **Network:** The IP address range for the network (e.g., 192.168.48.0/24).
+
+  - **OS Manual:** Operating system details (if applicable).
+
+  - **Virima:** A field for Virima-specific information.
+
+  - **Region:** Geographic region of the network.
+
+  - **VLAN:** VLAN information, if relevant.
+
+  - **Test Value:** An extra customizable field.
+
+  - **Building:** The physical location tied to the network.
+
+This tab displays only static data and doesn't allow editing.
+
+## IP List Tab
+
+The **IP List** tab shows all IP addresses associated with the network, allowing you to view the status of each IP address.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image12-1.gif" style="width:4.875in;height:2.24167in" />
+
+- **Example:**
+
+  - **100 Records per Page:** Number of records displayed per page.
+
+  - **Status:** The status of each IP (e.g., **USED**, **UNUSED**).
+
+  - **IP Address:** The actual IP address associated with the network.
+
+  - **Filter for Status:** Filter IP addresses based on their status (e.g., **USED** or **UNUSED**).
+
+  - **Filter for IP Address:** Filter by specific IP addresses.
+
+## Schedule Details Tab
+
+The **Schedule Details** tab shows scheduled tasks for the network, such as automatic syncs or scans.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image13-1.gif" style="width:4.875in;height:1.925in" />
+
+- **Example:**
+
+  - **100 Records per Page:** Number of scheduled records displayed per page.
+
+  - **Client:** The client associated with the schedule (e.g., **Virima Public App**).
+
+  - **Subnet:** The subnet associated with the schedule (e.g., **192.168.48.0/24**).
+
+  - **Added At:** The date and time when the schedule was added (e.g., **12/09/2021 17:04:26**).
+
+  - **Cron Expression:** The scheduling pattern (e.g., **at 0, 10, 20, 30, 40 and 50 minutes**).
+
+## History Tab
+
+The History Tab provides a record of all changes made to the network, including actions such as adding or modifying configurations.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image14-1.gif" style="width:4.875in;height:1.575in" />
+
+- **Example:**
+
+  - **10 Records per Page:** Number of history records displayed per page.
+
+  - **Action:** The action performed (e.g., Subnet Add).
+
+  - **Modified On:** The date and time when the action was performed (e.g., 05/10/2019, 17:20:39).
+
+  - **Modified By:** The user who made the change (e.g., Franco Powers).
+
+  - **Changes:** The specific changes made in the action.
+
+# Other Functions and Page Elements
+
+## Records per Page
+
+Click the drop-down list and select the number of records to display in this window.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image15-1.png" style="width:3.9in;height:0.875in" />
+
+| **Control**                   | **Description**                                                                                                                                                                  |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Records per Page dropdown** | Click the drop-down and choose how many records to display—only values in the hundreds (e.g., 100, 200, 300). The list refreshes immediately to show that many entries per page. |
+
+## Auto Refresh
+
+Use this function to update the window at a specific interval.
+
+Click the ***Auto Refresh*** drop-down list and select from one of the following: **None, 20 seconds, 40 seconds, 60 seconds**, or **Custom** (specify a custom refresh time).
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image16-1.gif" style="width:3.9in;height:0.875in" />
+
+## Personalize Columns
+
+Use this function to personalize the columns displayed in the record window:
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image17-1.gif" style="width:4.875in;height:1.36667in" />
+
+1.  While viewing a record list, click the **Personalize Columns** icon.
+
+2.  In the **Search for properties** field, type the name of any property to search for, then click the Search icon.
+
+3.  Under the **Search Results** column, a list of all available columns is shown. A check mark indicates the column has been selected.
+
+4.  Under the **Selected Items** column, a list of currently selected columns is shown. To add an item to this list, click on the column name in the Search Results list.
+
+5.  Click **Default View** to load the default settings.
+
+6.  Click **Clear All** to remove all selections and return to the default view.
+
+7.  Click **Save** to retain the current selections.
+
+8.  Click **Cancel** to discard any changes.
+
+## Manage Filters
+
+Filters let you narrow down a large data set to just the records you need. Filters are specific to each user.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image18.png" style="width:4.875in;height:0.48333in" />
+
+### Apply & Save a Filter
+
+1.  Under the column header, click in the **Filter** field.
+
+2.  Type your search text and press **Enter**. The list refreshes to show matching records.
+
+3.  Click **Save Filter**.
+
+4.  In the dialog, give your filter a name and click **Save**.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image19-1.gif" style="width:4.875in;height:1.24167in" />
+
+You can repeat these steps to create multiple saved filters.
+
+### Apply or Delete a Saved Filter
+
+1.  Click the **Saved Filter** icon on the toolbar to open the Filters list.
+
+2.  Select a filter to apply it to your data.
+
+3.  *(Optional)* Click **Set as Default** to make it the filter that loads automatically.
+
+4.  To remove a saved filter, click its **Delete** icon.
+
+<img src="C:\Docs\mdx_format\media\IPAM_Networks/media/image20-1.gif" style="width:4.875in;height:1.31667in" />

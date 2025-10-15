@@ -1,0 +1,91 @@
+# Correlation
+
+- [Overview](#Correlation-Overview)
+
+- [Correlation](#Correlation-Correlation)
+
+  - [Accessing the Correlation Window](#Correlation-AccessingtheCorrelationWind)
+
+  - [Managing Blueprint Correlators](#Correlation-ManagingBlueprintCorrelator)
+
+    - [Adding a New Blueprint Correlator](#Correlation-AddingaNewBlueprintCorrelat)
+
+  - [Editing an Existing Correlator](#Correlation-EditinganExistingCorrelator)
+
+  - [Deleting a Correlator](#Correlation-DeletingaCorrelator)
+
+# Overview
+
+The **Correlator** is a CMDB feature that identifies and reconciles applications and devices discovered across your network, then updates the CMDB while preventing duplicates. By applying blueprint-specific correlation rules that rely on unique CMDB properties (which must already be defined), it ensures a single authoritative record for each host—even when multiple scans occur. This guide shows how to access the correlation window and manage blueprint rules so you can maintain clean, accurate configuration data that improves asset management and operational efficiency.
+
+# Correlation
+
+## Accessing the Correlation Window
+
+1.  In the main window, go to **Admin \> Discovery \> Correlation**.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image1-1.png" style="width:4.91667in;height:1.25in" />
+
+2.  The Correlation window opens, displaying existing blueprint rules.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image2-1.png" style="width:4.91667in;height:1.41667in" />
+
+## Managing Blueprint Correlators
+
+### Adding a New Blueprint Correlator
+
+1.  Click **Add Blueprint Co-relator**.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image3.png" style="width:4.91667in;height:1in" />
+
+2.  A new row appears at the bottom of the list.
+
+3.  In the **Select Blueprint** dropdown, choose the appropriate blueprint (e.g., DMZ, Router, Website).
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image4.png" style="width:4.91667in;height:0.75in" />
+
+*Only one blueprint can be selected. If the blueprint is already in use, an alert will appear.*
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image5-1.png" style="width:4.91667in;height:1.16667in" />
+
+4.  Click **Add Rule** to open the rule dialog box.
+
+5.  Select a property from the dropdown list.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image6-1.png" style="width:4.91667in;height:1.58333in" />
+
+6.  Use the **Add** icon to add more properties.
+
+7.  Use the **Cancel** icon to remove individual properties.
+
+8.  Click **Clear** to remove all selected properties.
+
+9.  Click **Done** to finalize the rule.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image7-1.png" style="width:4.91667in;height:1.41667in" />
+
+## Editing an Existing Correlator
+
+1.  In the Correlation window, find the blueprint you want to edit.
+
+2.  Click the **pencil icon** next to it.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image8.png" style="width:4.91667in;height:0.91667in" />
+
+3.  In the rule dialog, make any required changes.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image9.png" style="width:4.91667in;height:1.08333in" />
+
+4.  Click **Done** to save updates.
+
+## Deleting a Correlator
+
+Deleting a rule will revert blueprint to its default matching method (e.g. IP address). There is no confirmation prompt. Deletion is immediate and cannot be undone.
+
+1.  In the Correlation window, locate the blueprint.
+
+2.  Click the **Delete** icon.
+
+<img src="C:\Docs\mdx_format\media\Correlation/media/image10.png" style="width:4.91667in;height:1in" />
+
+Before navigating away from the Correlation page, make sure to click the Save button to apply all changes.

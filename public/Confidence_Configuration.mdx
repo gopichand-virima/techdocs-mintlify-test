@@ -1,0 +1,33 @@
+# Confidence Configuration
+
+- [Overview](#ConfidenceConfiguration-Overview)
+
+- [Accessing the Configuration](#ConfidenceConfiguration-AccessingtheCon)
+
+# Overview
+
+The **Confidence Configuration** feature in Virima enables organizations to measure the freshness and reliability of Configuration Item (CI) data within the CMDB. By assigning confidence levels—such as *Very High, Medium, or Low*—based on the age of the last scan, administrators can quickly determine which records are current and which may require revalidation.
+
+This functionality improves **trust in CMDB data**, helps **prioritize re-scanning or cleanup efforts**, and ensures decision-making is based on accurate, up-to-date information. With customizable thresholds aligned to organizational policies and discovery cycles, Confidence Configuration provides a flexible, intuitive way to maintain a cleaner and more reliable CMDB.
+
+# Accessing the Configuration
+
+1.  **Navigate to Configuration:**
+
+    - Go to **Admin \> SACM \> Confidence Configuration**.
+
+    - The Confidence Configuration window will open.
+
+<img src="C:\Docs\mdx_format\media\Confidence_Configuration/media/image1-1.jpg" style="width:4.875in;height:2.00833in" />
+
+2.  **Set Confidence Levels:**
+
+    - In the **Confidence Level** section, you’ll see five predefined categories: Very High, High, Medium, Low, and Very Low.
+
+    - For each level, define the **Age** threshold by entering a number and selecting a time unit (Days, Months, or Years). This determines how recent the last discovery scan must be for a CI to fall under that confidence level.
+
+      - For example: A CI scanned within the last 7 days may be marked as **Very High** confidence, while one scanned over 45 days ago might be **Very Low**.
+
+3.  **Save Configuration:**
+
+    - After setting the values, click **Save** to apply the configuration.

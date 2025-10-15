@@ -1,0 +1,1583 @@
+# ITAM_CMDB
+
+- [Overview](#ITAM_CMDB-Overview)
+
+- [Prerequisites](#ITAM_CMDB-Prerequisites)
+
+- [Configuration Management Database](#ITAM_CMDB-ConfigurationManagementDataba)
+
+  - [Accessing CMDB](#ITAM_CMDB-AccessingCMDB)
+
+  - [Managing CMDB](#ITAM_CMDB-ManagingCMDB)
+
+  - [Viewing and Editing a CI](#ITAM_CMDB-ViewingandEditingaCI)
+
+- [Related Records](#ITAM_CMDB-RelatedRecords)
+
+  - [Other Functions and Page Elements](#ITAM_CMDB-OtherFunctionsandPageElements)
+
+# Overview
+
+The **Configuration Management Database (CMDB)** in Virima serves as a centralized repository for managing and tracking **Configuration Items (CIs)**—the essential components of an IT environment. It offers a structured view of all hardware and software and their interrelationships, enabling organizations to maintain visibility and control over their IT infrastructure.
+
+Through the CMDB interface, each CI features a detailed profile that includes technical attributes, ownership, linked components, audit history, and lifecycle information. This allows IT teams to trace dependencies, understand service impacts, and ensure accurate asset tracking.
+
+By leveraging the CMDB, organizations can achieve:
+
+- **Complete asset visibility** – Unified access to technical and business details of every CI.
+
+- **Relationship mapping** – Clear visualization of interdependencies among assets.
+
+- **Lifecycle management** – Oversight of changes, maintenance, and vulnerabilities over time.
+
+- **Audit and compliance support** – Reliable audit logs and change records for governance.
+
+- **Operational efficiency** – Improved incident, problem, and change management processes through accurate, up-to-date data.
+
+In essence, Virima’s CMDB lays the foundation for effective IT service management by ensuring consistent, transparent, and actionable insights into the IT environment.
+
+# Prerequisites
+
+Before using the CMDB in Virima, ensure the following conditions are met:
+
+- **CIs must exist in discovered items**
+
+  - A CI must first appear in the *Discovered Items* list before being moved into the CMDB.
+
+  - This requires successful **discovery scans** using valid credentials.
+
+  - Once discovered, the CI can be formally added to the CMDB.
+
+- **CIs must be present in the CMDB to perform actions**
+
+  - To use CMDB actions such as **Audit, Change Attributes, Process ADM, Process Cloud/DevOps Hierarchy, Patch Report, vCenter Hierarchy**, and others, the CI must already exist in the CMDB.
+
+  - Actions **cannot be triggered directly** from the *Discovered Items* list.
+
+- **Linking ITSM modules to CIs**
+
+  - To associate CIs with ITSM records (e.g., **Incidents, Requests, Changes, Problems, Known Errors, Releases, or Knowledge**), manually assign the root-cause CI during record creation in the respective module.
+
+  - If multiple users need to be assigned for support, go to the **Users module** and add the users with the required roles. (Refer to the *User Management guide* for detailed instructions on adding users.)
+
+# Configuration Management Database
+
+## Accessing CMDB
+
+From the ITSM module, open **Configuration Management**, then select **CMDB**.
+
+This section provides access to the Configuration Management Database, where you can view, manage, and update configuration items and their relationships.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image1-1.png" style="width:4.875in;height:1.5in" /><img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image2-1.png" style="width:4.875in;height:1.84167in" />
+
+## Managing CMDB
+
+### Available Select Actions for CIs
+
+The **"Select Actions"** dropdown in the CMDB allows users to perform various operations on selected Configuration Items (CIs).
+
+These actions are available only after items are added to the CMDB (not while in the discovered state).
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image3-1.png" style="width:4.875in;height:2.36667in" />
+
+This menu provides tools to audit, update, process, or manage data related to selected CIs. Common actions include:
+
+- **Audits**  
+  View the complete history of changes made to a CI for accountability and compliance.
+
+- **Change Attributes**  
+  Update CI details such as **status, owner, or location**.
+
+- **Copy to External Tools**
+
+  - **Copy to Ivanti** – Export selected CI data to Ivanti.
+
+  - **Copy to Jira** – Send CI records to Jira for tracking.
+
+  - **Copy to ServiceNow** – Sync CI data with ServiceNow ITSM.
+
+- **Delete / Export / New**
+
+  - **Delete** – Remove a CI record from the CMDB.
+
+  - **Export** – Download CI data for external reporting or analysis.
+
+  - **New** – Add a new CI record manually.
+
+- **Generate Installed Software Report**  
+  Create a report listing software installed on the selected CI.
+
+- **Process ADM (Application Dependency Mapping)**  
+  Automatically discover and map **application dependencies and relationships**.
+
+- **Process Available Patch Report**  
+  View pending **updates and patches** available for the CI.
+
+- **Process Cloud Hierarchy / DevOps / vCenter**  
+  Organize and map virtual and cloud-based infrastructure, including DevOps and VMware vCenter hierarchies.
+
+- **Process Missing Components**  
+  Identify and report **expected but missing CI components**.
+
+- **Process Network Connections**  
+  Map and analyze **network links and communication paths** related to the CI.
+
+- **Process Software Installation**  
+  Track, verify, and update **software installations** for the selected CI.
+
+### Audits
+
+The **Audit** feature in CMDB allows you to verify the configuration and presence of Configuration Items (CIs).
+
+- Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+- Choose **Audits** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image4-1.png" style="width:4.875in;height:1.83333in" />
+
+You can perform audits by either **creating a new audit process** or **adding CIs to an existing audit**.
+
+#### Adding to an existing audit
+
+To attach CIs to an existing audit:
+
+1.  Select the CI(s) from the CMDB.
+
+2.  Choose **Audit** from the **Select Actions** dropdown.
+
+3.  Select the **Add to Existing Audit** option.
+
+4.  Use the search bar to locate the audit.
+
+5.  Select it from the list and click **Add**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image5-1.png" style="width:4.875in;height:2.61667in" />
+
+#### Creating a new audit
+
+To initiate a new audit:
+
+- Select one or more CI records from the CMDB.
+
+- From the **Select Actions** dropdown, choose **Audit**.
+
+- In the pop-up window, select **New Audit**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image6-1.png" style="width:4.875in;height:2.925in" />
+
+- Fill in the following fields:
+
+  - **Name**: Enter a unique name for the audit (e.g., “Java Audit”).
+
+  - **Description**: Add a brief explanation of the audit purpose.
+
+  - **Auditor**: Assign the user(s) responsible for conducting the audit.
+
+  - **Checked By**: Assign the user(s) responsible for reviewing the audit results.
+
+  - **Run A Scan**: Enable this option to trigger a **probe scan** on the target CI(s).
+
+  - **Select Probe**: Choose a specific probe to define what the scan checks.
+
+  - **Scan Frequency**: Set how often the scan should repeat, if needed.
+
+  - **Audit Result**: Select the outcome (e.g., Pass, Fail, In Progress).
+
+- Click **Add** to start the audit process.
+
+**Example**: Java Audit Scan
+
+When you assign a **Java audit scan** to a CI, the selected probe checks whether **Java is installed** on the system.
+
+- If Java is present, the audit result will reflect a **Pass** (or custom result).
+
+- If Java is missing, it may show **Fail** or **In Progress**, depending on the probe response.
+
+- The **Checked By** field allows designated users to review and verify the automated results.
+
+### Change attributes
+
+The **Change Attributes** action in the Virima CMDB enables users to update one or more field values across selected Configuration Items (CIs) in bulk.
+
+- Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+- Choose **Change Attributes** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image7-1.png" style="width:4.875in;height:2.375in" />
+
+- After selecting CIs and triggering the **Delete** Action, a confirmation prompt appears.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image8-1.png" style="width:4.875in;height:1.425in" />
+
+- Click **"Yes"** to proceed or **"No"** to cancel. A screen then displays all **editable fields**, grouped by category.
+
+#### **Modify CI Properties**
+
+The Change Attributes form is organized into the following sections:
+
+The following fields may appear (depending on CI type, user role, and blueprint design) and can be edited in bulk:
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image9-1.png" style="width:4.875in;height:2.09167in" /><img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image10-1.png" style="width:4.875in;height:2.425in" />
+
+**Application Details**
+
+- **Date Properties**: Various date fields with calendar pickers
+
+- **Dropdown Properties**: Configurable dropdown selections
+
+- **Custom Fields**: Application-specific properties
+
+**Asset Primary Information**
+
+- **Manufacturer**: Asset manufacturer details
+
+- **Asset Name**: Descriptive name for the asset
+
+- **Subscription ID**: Unique subscription identifier
+
+- **Server Port**: Network port information
+
+- **Condition**: Asset condition (Normal, etc.)
+
+- **Business Criticality**: Impact level (High, Medium, Low)
+
+- **Type**: Asset categorization
+
+- **Description**: Detailed asset description
+
+- **Model Number**: Manufacturer model identifier
+
+- **Serial Number**: Unique serial identifier
+
+- **Resource Group**: Organizational grouping
+
+- **Company**: Associated company/organization
+
+- **Local FQDN**: Fully qualified domain name
+
+- **Host Name**: Network host identifier
+
+- **Contracts**: Associated contract information
+
+- **TestToDelete**: Testing/validation fields
+
+**Device Details**
+
+- **Device Location**: Physical/logical location
+
+- **Hardware Type**: Device classification
+
+**Hardware and Network**
+
+- **IP Address**: Primary IP configuration
+
+- **Virtual IP Address**: Virtual network addressing
+
+- **Uptime**: System uptime information
+
+- **Domain**: Network domain membership
+
+- **Network Properties**: Various network-related integer and string properties
+
+- **Boolean Properties**: Network configuration flags
+
+**Maintenance and Backup Information**
+
+- **Backup Configurations**: Dropdown selections for backup settings
+
+- **Maintenance Schedules**: Maintenance-related properties
+
+**Network Adapter Details**
+
+- **MAC Address**: Physical network adapter address
+
+- **Default Gateway**: Network gateway configuration
+
+**Operating System Details**
+
+- **Operating System**: OS identification
+
+- **OS Build Number**: Specific build information
+
+- **OS Architecture**: System architecture (32-bit/64-bit)
+
+- **OS Kernel**: Kernel version information
+
+**Processor Details**
+
+- **Number of Processors**: CPU count information
+
+**Software Instance Details**
+
+- **Build Version**: Software build information
+
+- **Display Version**: User-visible version strings
+
+**Virtual Machine Details**
+
+- **UUID**: Unique virtual machine identifier
+
+**Other Information**
+
+- **Owner**: Asset owner assignment with **"Add"** button
+
+- **Second Level Support**: Support contact with **"Add"** button
+
+- **Third Level Support**: Escalation contact with **"Add"** button
+
+- **Tags**: Asset categorization tags with **"Add"** button
+
+- **Location**: Physical/logical location with **"Add"** button
+
+- **Hardware Asset**: Associated hardware with **"Add"** button
+
+- **OS License Key**: Operating system licensing with **"Add"** button
+
+- **Vendor**: Manufacturer/vendor information with **"Add"** button
+
+**Contacts**
+
+- **Contact Management**: Add/manage CI-related contacts with **"Add"** button
+
+After configuring property values, click **"Save"**
+
+Changes apply to all selected CIs. You will then return to the main CMDB view.
+
+**Verify changes**: Confirm updated properties reflect in CI records. Open specific CIs to confirm detailed changes
+
+### Delete
+
+The **Delete** action enables the removal of selected CIs from the CMDB.
+
+1.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+2.  Choose **Delete** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image11-1.png" style="width:4.875in;height:2.24167in" />
+
+- Users must select at least one CI before triggering this action.
+
+- A confirmation prompt will appear to avoid accidental deletions.
+
+- Click **Yes** to confirm the deletion.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image12-1.png" style="width:4.875in;height:1.49167in" />
+
+- Once deleted, the CI is removed from the active CMDB view and cannot be used in further operations.
+
+Use this option carefully, especially in production environments. Deleted CIs may need to be re-imported or rediscovered.
+
+### Export
+
+The **Export** feature in CMDB allows users to download CI data in an Excel spreadsheet format. This is helpful for reporting, analysis, audits, or integration with external systems.
+
+- Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+- Choose **Export** from the dropdown.
+
+There are two types of exports available:
+
+#### Basic export
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image13-1.png" style="width:4.875in;height:1.7in" />
+
+- Quick, straightforward export.
+
+- Includes only **selected CI records**.
+
+- Exports core CI properties as displayed in the CMDB list view.
+
+- After initiation, a confirmation window appears. The system emails the user when the export file is ready.
+
+Export time may vary depending on the number of CIs selected and data size.
+
+#### Advanced export
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image14-1.png" style="width:4.875in;height:2.61667in" />
+
+- A customizable, multi-step export process.
+
+- Allows users to:
+
+  - **Select CI Blueprints** – Choose which blueprint types (e.g., Windows Server, Software) to include.
+
+  - **Select Properties** – Choose specific fields (such as Asset Name, Status, and Serial Number) for export.
+
+  - **Select Components** – Include linked components, such as software instances and network adapters.
+
+  - **Select Component Properties** – Define which component properties should be included in the export.
+
+Users can use all properties or filter by main properties to focus only on critical data fields.
+
+Ideal for creating **detailed reports**, **audit packs**, or **custom views** tailored to specific stakeholders.
+
+### New
+
+The **New** action is used to manually create a new CI entry in the CMDB.
+
+1.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+2.  Choose **New** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image15-1.png" style="width:4.875in;height:1.74167in" />
+
+- Users can define the **CI type** (based on a blueprint) and manually fill in its properties.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image16-1.png" style="width:4.875in;height:2.225in" />
+
+- This is helpful when an asset isn't discovered automatically or needs to be added proactively.
+
+- The form will include fields like Asset Name, Host Name, Status, Serial Number, etc., based on the selected blueprint.
+
+- Enter the details, then click **Add**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image17-1.png" style="width:4.875in;height:2.28333in" />
+
+Great for creating standalone or exception assets not brought in through discovery or integrations.
+
+### Copy to Ivanti
+
+The **Copy to Ivanti** action transfers all CIs, components, and relationships from the CMDB to Ivanti. The system retrieves records, checks them against blueprint conditions on the Ivanti Mapping page, and maps data to Ivanti properties. Data is sent in the following order to maintain dependencies:
+
+- Main configuration items (CIs)
+
+- Relationships
+
+- Components
+
+- JSON components
+
+1.  Open the CMDB module in Virima.
+
+2.  Select the CIs from the CMDB list to copy to Ivanti.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Copy to Ivanti** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image18-1.png" style="width:4.875in;height:1.88333in" />
+
+5.  A confirmation dialog appears, asking, "Are you sure you want to move the Asset?"
+
+    1.  Click **Yes** to proceed or **No** to cancel.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image19-1.png" style="width:4.875in;height:2.44167in" />
+
+7.  The system processes the selected records.
+
+8.  A success message appears: "Records will be moved in the background." Click **OK** to close the message.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image20-1.png" style="width:4.875in;height:2.125in" />
+
+9.  Monitor progress and status on the **Sync Logs** page.
+
+### Copy to Jira
+
+The **Copy to Jira** action transfers all CIs, components, and relationships from the CMDB to Jira. The system retrieves records, validates them against blueprint conditions on the Jira Mapping page, maps data to Jira properties, and sends it in the following order:
+
+- Main CIs
+
+- Relationships
+
+- Components
+
+- JSON components
+
+1.  Open the CMDB module in Virima.
+
+2.  Select the CIs from the CMDB list to copy to Jira.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Copy to Jira** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image21-1.png" style="width:4.875in;height:2.25in" />
+
+5.  A confirmation dialog appears, asking, "Are you sure you want to move the Asset?"
+
+    1.  Click **Yes** to proceed or **No** to cancel.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image22-1.png" style="width:4.875in;height:1.96667in" />
+
+6.  The system processes the selected records.
+
+7.  A success message appears: "Records will be moved in the background." Click **OK** to close the message.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image23-1.png" style="width:4.875in;height:1.75in" />
+
+8.  Monitor progress and sync details from the **Sync Logs** page under Configuration Management.
+
+9.  After completion, check the CMDB page. If the copy is successful, the Ivanti sync flag will be set to **true**; if unsuccessful, it will be set to **false**.
+
+### Copy to ServiceNow
+
+The **Copy to ServiceNow** action transfers Configuration Items (CIs) from Virima to ServiceNow based on predefined mappings. The system retrieves records, validates them against mapping rules, maps the data to ServiceNow properties, and transfers them in the required sequence to maintain dependencies.
+
+1.  Open the CMDB module in Virima.
+
+2.  Select the CIs from the CMDB list to copy to ServiceNow.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Copy to ServiceNow** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image24-1.png" style="width:4.875in;height:2.2in" />
+
+5.  The copied CIs will appear in the ServiceNow CMDB, with Virima as their source.
+
+6.  Validating Records in ServiceNow
+
+    1.  Log in to your ServiceNow instance.
+
+    2.  In the Filter Navigator, search for and open the relevant CMDB table where the CIs were copied (e.g., Windows for Windows Servers).
+
+    3.  Verify that the copied CI records are present in the list view.
+
+### Generate Installed Software Report
+
+You can generate an **Installed/Uninstalled Software Report** for a specific date range in exportable format when software is installed or uninstalled.
+
+1.  Click **CMDB**, then select **Generate Installed Software Report** from the **Select Actions** list to export the data.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image25-1.png" style="width:4.875in;height:2.29167in" />
+
+### Process ADM
+
+The **Process ADM** action allows users to process Application Dependency Mapping (ADM) for selected Configuration Items (CIs). This operation analyzes network traffic, service dependencies, and application connections for the chosen assets, creating a visual and data-driven map of relationships between applications, services, and infrastructure components.
+
+To run the **Process ADM** job, scanned discovery data must be available in the CMDB. Without this data, the ADM process cannot generate accurate dependency mappings.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for ADM processing.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process ADM** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image26-1.png" style="width:4.875in;height:2.325in" />
+
+5.  The system collects dependency data for the selected CIs.
+
+6.  It analyzes communication patterns, service relationships, and supporting infrastructure components.
+
+7.  Once processed, the ADM relationship data updates in the CMDB.
+
+8.  Monitor progress through the **Sync Logs** page.
+
+### Process Available Patch Report
+
+The **Process Available Patch Report** action generates a report of all available software patches (for Windows only) applicable to the selected Configuration Items (CIs). This helps identify missing updates, security patches, and system improvements for effective patch management.
+
+To run the **Process Available Patch Report** job, scanned discovery data must be available in the CMDB. Without this data, the patch report cannot be generated accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for which you want to generate the patch report.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process Available Patch Report** from the dropdown.
+
+5.  The system scans each selected CI for available updates.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image27-1.png" style="width:4.875in;height:2.35833in" />
+
+6.  It collects data from integrated patch repositories or operating system update services.
+
+7.  The report includes details such as patch ID, description, severity, and release date.
+
+8.  Monitor progress and completion status via the **Sync Logs** page if processed in the background.
+
+### Process Cloud Hierarchy
+
+The **Process Cloud Hierarchy** action builds and updates the hierarchical view of cloud resources for selected Configuration Items (CIs). This process maps cloud assets to their parent-child relationships, service dependencies, and resource group structures, providing a visual representation of cloud infrastructure within the CMDB.
+
+To run the **Process Cloud Hierarchy** job, scanned discovery data or AWS imported data must be available in the CMDB. Without this data, the cloud hierarchy cannot be generated accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs (cloud-related assets) for hierarchy mapping.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process Cloud Hierarchy** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image28-1.png" style="width:4.875in;height:2.375in" />
+
+5.  The system retrieves cloud metadata and relationship details for the selected CIs.
+
+6.  It maps them into a hierarchical structure (e.g., accounts → resource groups → services → instances).
+
+7.  The processed hierarchy updates in the CMDB.
+
+8.  Review the structure in the **Cloud Hierarchy** view or other relevant visualization modules.
+
+9.  Track progress via the **Sync Logs** page if processing runs in the background.
+
+### Process DevOps
+
+The **Process DevOps** action processes selected Configuration Items (CIs) to identify, record, and update DevOps-related configuration and deployment details in the CMDB. It links CIs to relevant DevOps pipelines, repositories, environments, and automation scripts, enhancing visibility into CI/CD processes and operational dependencies.
+
+To run the **Process DevOps** job, scanned discovery data must be available in the CMDB. Without this data, DevOps information cannot be processed accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for which you want to process DevOps data.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process DevOps** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image29-1.png" style="width:4.875in;height:2.34167in" />
+
+5.  The system fetches associated DevOps pipeline, repository, and environment data.
+
+6.  It maps this data to the selected CIs in the CMDB.
+
+7.  Updated DevOps relationships and metadata are stored in the CMDB.
+
+8.  Verify the processed data in the CI’s details or related DevOps views.
+
+9.  Track progress and results via the **Sync Logs** page if processing runs in the background.
+
+### Process Missing Components
+
+The **Process Missing Components** action identifies and updates missing hardware or software component information for selected Configuration Items (CIs) in the CMDB. This ensures all required component details are recorded, improving CMDB completeness and accuracy.
+
+To run the **Process Missing Components** job, scanned discovery data must be available in the CMDB. Without this data, missing component details cannot be identified accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for which you want to identify missing components.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process Missing Components** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image30-1.png" style="width:4.875in;height:2.36667in" />
+
+5.  The system evaluates the selected CIs against expected component configurations.
+
+6.  It flags missing hardware or software details.
+
+7.  Missing component information is recorded in the CMDB.
+
+8.  Review results in the CI details or relevant CMDB reports.
+
+9.  Monitor progress and results via the Sync Logs page if processing runs in the background.
+
+### Process Network Connections
+
+The **Process Network Connections** action identifies and updates network connectivity details for selected Configuration Items (CIs). This includes mapping connections between devices, servers, switches, and other network components to ensure the CMDB accurately reflects the physical and logical network topology.
+
+To run the **Process Network Connections** job, scanned discovery data must be available in the CMDB. Without this data, network connection details cannot be generated accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for which you want to identify network connections.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process Network Components** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image31-1.png" style="width:4.875in;height:2.38333in" />
+
+5.  The system collects network connection data for the selected CIs.
+
+6.  It maps connectivity between devices, including both direct physical links and logical network paths.
+
+7.  Updated network connection details are stored in the CMDB.
+
+8.  Review them in the network topology or dependency views.
+
+9.  Monitor progress and completion via the Sync Logs page if processing runs in the background.
+
+### Process Software Installation
+
+The **Process Software Installation** action identifies and updates software installation details for selected Configuration Items (CIs). This ensures the CMDB contains accurate information about installed applications, their versions, and associated licensing data.
+
+To run the **Process Software Installation** job, scanned discovery data must be available in the CMDB. Without this data, software installation details cannot be processed accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for which you want to identify software installations.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process Software Installation** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image32-1.png" style="width:4.875in;height:2.325in" />
+
+5.  The system collects installed software data for the selected CIs.
+
+6.  It records application names, versions, vendors, and other related details.
+
+7.  Updated software installation data is stored in the CMDB.
+
+8.  Review the information in the CI details or relevant CMDB reports.
+
+9.  Monitor progress and completion via the **Sync Logs** page if processing runs in the background.
+
+### Process vCenter Hierarchy
+
+The **Process vCenter Hierarchy** action organizes and updates the hierarchical structure of VMware vCenter resources for selected Configuration Items (CIs). This process maps virtual machines, hosts, clusters, data stores, and networks into a structured vCenter hierarchy within the CMDB.
+
+To run the **Process vCenter Hierarchy** job, ensure that scanned discovery data is available in the CMDB. Without this data, the vCenter hierarchy cannot be generated accurately.
+
+1.  Open the **CMDB** module in Virima.
+
+2.  Select the CIs for which you want to identify vCenter resources.
+
+3.  Click the **Select Actions** dropdown at the top-right of the CMDB list.
+
+4.  Choose **Process vCenter Hierarchy** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image33-1.png" style="width:4.875in;height:2.375in" />
+
+The system retrieves vCenter resource relationships and structure for the selected CIs.
+
+5.  It maps them into the correct hierarchy (e.g., data centers → clusters → hosts → VMs).
+
+6.  The updated vCenter hierarchy is stored in the CMDB.
+
+7.  Review the structure in the **vCenter Hierarchy** view or relevant virtualization dashboards.
+
+8.  Monitor progress and completion via the **Sync Logs** page if processing runs in the background.
+
+## Viewing and Editing a CI
+
+Each **Configuration Item (CI)** in the Virima CMDB features a **dedicated record view** that displays all critical data related to that CI, organized into tabs. This setup enables users to analyze, update, and manage the CI from a single screen.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image34-1.png" style="width:4.875in;height:2.34167in" />
+
+### CI Left Panel
+
+The left panel provides **quick access details** such as:
+
+- Asset ID & Name
+
+- Blueprint Type
+
+- IP Address, Host Name
+
+- Scan & Modification Timestamps
+
+- Confidence Level
+
+- Warranty, Vendor, and Location Info
+
+This section offers a summary of the CI’s profile for quick validation.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image35-1.png" style="width:4.875in;height:1.475in" /><img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image36-1.png" style="width:2.83333in;height:6.94167in" />
+
+**How to Update:**
+
+Use one of the following methods:
+
+- Click a **blue hyperlink** (e.g., Windows Host) to open the function view.
+
+- Click the **✎ pencil icon** next to a field to edit. Enter the updated information and click **Save**.
+
+The availability of editable fields may vary based on the blueprint type or user permissions.
+
+### Contacts on a CI
+
+Use these cards to record who owns and supports the CI. Each card shows a profile avatar, **Name**, **Email**, and **Phone**.  
+Common controls:
+
+- **Edit** (pencil) — opens a picker to select a user or type details.
+
+- **Remove** (×) — clears the current assignment.
+
+- **Collapse** (–) — hides/shows the card body.
+
+**Validation**
+
+- Email must be a valid format (e.g., name@domain.com).
+
+- Phone must follow standard numbering (digits, +, spaces, dashes).
+
+- When selecting from the directory, only active users can be assigned.
+
+**Owner**
+
+The system assigns the logged-in user as the CI owner when adding or moving a CI record from Discovered Items to CMDB.
+
+If the discovery process provides a user list and that user exists in the Admin → User Management directory, Virima assigns that user as the CI Owner instead of the logged-in user.
+
+After the CI is in the CMDB, you can manually update the Owner field at any time by editing the CI record.
+
+- **Name** – Owner’s full name (can be chosen from the user directory).
+
+- **Email / Phone** – Auto-filled from the user record; can be edited if needed.
+
+- **Remove** – Unassigns the owner; the CI will have no owner until one is set.
+
+**First-Level Support *(if enabled in your environment)***
+
+The help desk or primary support group for end-user issues.
+
+- **Name / Email / Phone** – Primary contact for initial triage and ticket intake.
+
+- Use **Edit** to assign a person or shared mailbox/account.
+
+**Second Level Support**
+
+The technical team that handles escalations from first level.
+
+- **Name / Email / Phone** – Escalation contact(s) for deeper investigation.
+
+- Assign an individual or the lead for a support group.
+
+**Third Level Support**
+
+Specialist/vendor team for complex or product-specific issues.
+
+- **Name / Email / Phone** – Expert contact or vendor support liaison.
+
+- Use for OEM, platform, or engineering escalations.
+
+When a Service Level Agreement (SLA) is triggered for a Configuration Item (CI) in the Virima CMDB, the system automatically assigns the First-Level, Second-Level, and Third-Level Support contacts to the CI. These assignments are based on the support contacts defined in the CI’s profile
+
+### Manager
+
+The line manager for the CI Owner or support team.
+
+- **Name / Email / Phone** – Used for escalations that require managerial action.
+
+- Often auto-suggested when you pick an Owner (pulls org data if available).
+
+### How to update a contact (any card)
+
+1.  Click the **pencil** on the card.
+
+2.  In the picker, search and select a user **or** type Name/Email/Phone.
+
+3.  Click **Save**. The fields populate and the avatar syncs from the user profile.
+
+4.  To clear an assignment, click the **×** on the card.
+
+# Related Records
+
+Quick links to the CI’s in-flight and historical ITSM records. Counts are shown when available; clicking a link opens the corresponding, pre-filtered list.
+
+- **Open Incidents** – Active incident tickets tied to this CI.
+
+- **Open Requests** – Active service requests.
+
+- **Open Changes** – Change requests where this CI is affected.
+
+- **Open Problems** – Problem records linked to this CI.
+
+- **Open Known Errors** – Known error entries referencing this CI.
+
+- **Releases** – Release records where this CI participates.
+
+- **Open Knowledge** – Knowledge articles associated with this CI.
+
+### CI record sections and tabs
+
+When you open a CI (e.g., AST000001), the following key tabs are available:
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image37.png" style="width:4.875in;height:0.575in" />
+
+| **Tab**           | **Purpose**                                                                         |
+|-------------------|-------------------------------------------------------------------------------------|
+| **Details**       | Displays asset information such as name, status, IP address, OS, and hardware info  |
+| **Components**    | Shows associated components based on the Blueprint                                  |
+| **Log On Events** | Lists login activity and access events for the device or system                     |
+| **ITSM**          | Links to incidents, requests, problems, or changes associated with the CI           |
+| **Relationships** | Shows connections between this CI and others                                        |
+| **SLA**           | Defines response and resolution timelines based on ITSM priorities                  |
+| **Maintenance**   | Schedule maintenance tasks for a CI, such as rebooting or running specific commands |
+| **Attachments**   | Upload and view files like screenshots, reports, or manuals                         |
+| **Audits**        | Displays audits the CI is part of, including results and history                    |
+| **History**       | Shows modification history, including timestamps and users                          |
+| **Vulnerability** | Lists known vulnerabilities, threat severity, and risk details                      |
+| **Tasks**         | Tracks tasks or actions assigned to this CI                                         |
+| **Comments**      | Used for collaboration and notes by users                                           |
+
+Use these tabs to **view or edit data**, understand dependencies, and track the CI's role in services and infrastructure.
+
+### Details
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image38-1.png" style="width:4.875in;height:2.31667in" />
+
+- The **Details tab** provides the **primary information** for a Configuration Item (CI) and is the first section you see upon opening a CI record in the CMDB.
+
+- It serves as the **core identity and profile view** of the asset, containing all critical fields related to the asset's configuration, lifecycle, and management metadata.
+
+- The **Details view** consists of the following categories of data:
+
+  - Asset primary information
+
+  - Hardware and network
+
+  - Operating system details
+
+  - Supporting CIs
+
+  - Contacts
+
+  - Contracts
+
+#### **Business Service Map**
+
+- The **Business Service Map** provides a **pictorial representation** of Configuration Items (CIs) and their interrelationships.
+
+- It complements the **Relationships** tab by offering a **visual insight** into how CIs connect and contribute to service delivery.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image39-1.png" style="width:4.875in;height:2.375in" />
+
+- Upon clicking the BSM view:
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image40-1.png" style="width:4.875in;height:2.5in" />
+
+**Available Views:**
+
+| **View Type**                      | **Purpose**                                                                                              |
+|------------------------------------|----------------------------------------------------------------------------------------------------------|
+| Infrastructure View                | Visualizes servers and applications, showing their relationships.                                        |
+| Service Topology View              | Displays the complete runtime structure of a business service and its supporting components.             |
+| Communication View                 | Shows CIs connected through *Communicates With* relationships, ideal for mapping traffic paths.          |
+| ADM View                           | Visualizes application interactions via *Communicates With* links, typically used in ADM-based analysis. |
+| Network View                       | Presents physical and virtual network relationships among devices and services.                          |
+| Affected Business Application View | Highlights business services or applications affected by an impacted CI, helping assess service impact.  |
+| Cloud Topology View                | Focuses on representing cloud infrastructure, if available.                                              |
+
+At the bottom of the view, **color-coded legends** distinguish relationship types such as:
+
+- 🟧 Installed On
+
+- 🟩 Assigned To
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image41-1.png" style="width:4.875in;height:1.43333in" />
+
+#### **BSM Actions Tab:**
+
+The **Actions** dropdown in the Business Service Map (BSM) provides on-demand operations to enhance real-time visibility and management of the selected Configuration Item (CI). These options are located at the top right of the BSM interface.
+
+**Available Options:**
+
+| **Action**         | **Purpose**                                                                  |
+|--------------------|------------------------------------------------------------------------------|
+| **Rescan**         | Initiates a discovery rescan for the selected CI to collect the latest data. |
+| **Host Check**     | Performs a basic connectivity and credential validation check on the host.   |
+| **View Snapshots** | (If enabled) Opens previous snapshots of the BSM to view historical changes. |
+
+#### Select Actions Menu (Inside CI)
+
+Within the CI record, the **Select Actions** menu provides several advanced tools and functions:
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image42-1.png" style="width:4.875in;height:1.56667in" />
+
+| **Action**             | **Description**                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------|
+| **Add Property**       | Add a new custom property field to the CI                                                 |
+| **Copy to Ivanti**     | Transfer the CI, its components, and relationships to Ivanti for external ITSM management |
+| **Copy to Jira**       | Send the CI, its components, and relationships to Jira for tracking and integration       |
+| **Copy to ServiceNow** | Sync the CI, its components, and relationships with ServiceNow ITSM                       |
+| **Delete**             | Permanently remove the CI from the CMDB                                                   |
+| **Disable Editing**    | Locks the CI from being manually modified (typically used for syncing assets)             |
+| **Mark As Knowledge**  | Convert the CI into a reusable knowledge asset                                            |
+| **Merge CI**           | Merge duplicate or related CIs into a single record                                       |
+| **Release Hierarchy**  | View or manage release-related dependencies                                               |
+| **Rescan Now**         | Trigger an immediate re-scan of the CI via the available probe                            |
+
+##### Add Property
+
+Use this to add additional fields to a Configuration Item.
+
+1.  In the CI, Click **Select Actions**, and then select **Add Property**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image43-1.png" style="width:4.875in;height:1.85in" />
+
+2.  In the **Add Property** dialog:
+
+    - Use **Search for properties** to find a field.
+
+    - Expand a group (e.g., *Application Details*) and **check** the properties you want.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image44-1.png" style="width:4.875in;height:1.61667in" />
+
+3.  Click **Add**, then **Save** on the CI.
+
+##### Copy to Ivanti
+
+Copy a CMDB record from Virima to **Ivanti Service Manager** as an Asset/CI.  
+If the CI already exists in Ivanti (based on your mapping key), it’s **updated**; otherwise, a **new** record is created.
+
+1.  Click **Select Actions,** and then select **Copy to Ivanti**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image45-1.png" style="width:4.875in;height:1.63333in" />
+
+2.  In the confirmation dialog, click **Yes** to proceed.
+
+    - A “Processing, please wait” indicator appears; the job runs **in the background**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image46-1.png" style="width:4.875in;height:1.56667in" />
+
+3.  The system displays the **Success** message: “Records will be moved in the background.”
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image47-1.png" style="width:4.875in;height:1.475in" />
+
+4.  Open Ivanti Service Manager and confirm the Asset/CI was **created/updated** with mapped fields.
+
+##### Copy to Jira
+
+Copy a CMDB record from Virima to **Jira** as a tracked asset/CI.  
+If the CI already exists in Jira (based on your mapping key), it’s **updated**; otherwise, a **new** record is created.
+
+1.  Click **Select Actions,** and then select **Copy to Jira**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image48-1.png" style="width:4.875in;height:1.75833in" />
+
+2.  In the confirmation dialog, click **Yes** to proceed.
+
+    - A “Processing, please wait” indicator appears; the job runs **in the background**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image46-1.png" style="width:4.875in;height:1.56667in" />
+
+3.  The system displays the **Success** message: “Records will be moved in the background.”
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image47-1.png" style="width:4.875in;height:1.475in" />
+
+4.  Open Jira and confirm the Asset/CI was **created/updated** with mapped fields.
+
+##### Copy to Service Now
+
+Copy a CMDB record from Virima to **Service Now** as a tracked asset/CI.  
+If the CI already exists in Jira (based on your mapping key), it’s **updated**; otherwise, a **new** record is created.
+
+1.  Click **Select Actions,** and then select **Copy to ServiceNow**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image49-1.png" style="width:4.875in;height:1.84167in" />
+
+2.  In the confirmation dialog, click **Yes** to proceed.
+
+    - A “Processing, please wait” indicator appears; the job runs **in the background**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image46-1.png" style="width:4.875in;height:1.56667in" />
+
+3.  The system displays the **Success** message: “Records will be moved in the background.”
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image47-1.png" style="width:4.875in;height:1.475in" />
+
+4.  Open ServiceNow and confirm the Asset/CI was **created/updated** with mapped fields.
+
+Delete
+
+Permanently remove a Configuration Item (CI) from the **CMDB**
+
+1.  Click **Select Actions,** and then select **Delete**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image50-1.png" style="width:4.875in;height:1.80833in" />
+
+2.  In the confirmation dialog, review the warning and click **Delete** to proceed.
+
+3.  A success message confirms the request. The CI and all its CMDB relationships are removed from the active CMDB view and cannot be used in further operations.
+
+##### Disable Editing
+
+Lock a CI so its fields can’t be modified (read-only). Use this to preserve a validated record or prevent unauthorized changes.
+
+1.  Click **Select Actions,** and then select **Disable Editing**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image51-1.png" style="width:4.875in;height:1.39167in" />
+
+2.  In the confirmation dialog, review the message and click **Yes** to confirm.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image52-1.png" style="width:4.875in;height:1.325in" />
+
+3.  The CI switches to **read-only**: form fields, attachments, and properties cannot be edited or saved.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image53-1.png" style="width:4.875in;height:2.63333in" />
+
+4.  The record remains visible in searches, reports, BSM, and relationships (nothing is deleted).
+
+5.  To make changes later, use **Select Actions ▸ Enable Editing**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image54-1.png" style="width:4.875in;height:1.85in" />
+
+#### Mark as Knowledge
+
+Publish the current CI as a knowledge entry so it can be referenced in Knowledge Management. The CI stays in CMDB; this action creates/updates a linked knowledge record.
+
+1.  Click **Select Actions,** and then select **Mark As Knowledge**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image55-1.png" style="width:4.875in;height:1.7in" />
+
+2.  In the confirmation dialog (or metadata form, if prompted), review and click **Yes** to confirm.
+
+3.  A knowledge article is created or updated and linked to the CI.
+
+##### Merge CI
+
+Combine duplicate CIs into a single “master” record so relationships, history, and other references are consolidated, and you don’t manage the same asset twice.
+
+1.  Open the CI you want to keep (the master) in CMDB.
+
+2.  Click **Select Actions,** and then select **Merge CI**.  
+    The **Merge CI** dialog opens.
+
+3.  Choose how to merge:
+
+    - **Merge Into** *(recommended)* – Merge **another** CI **into the currently open** CI (this record stays as master).
+
+    - **Merge From** – Merge **the current CI** into **another** CI (the other record becomes master).
+
+4.  In the **Search** box (or **Advanced Search**), find and select the counterpart CI to merge.
+
+5.  Click **Add**, then confirm when prompted.
+
+6.  The system displays a success message.
+
+7.  The **master** CI is retained; its **Asset ID** and primary identity remain unchanged.
+
+    - Where supported, **relationships, references, and other mergeable data** from the secondary CI are consolidated into the master.
+
+    - The **secondary** (merged-from) CI is removed from active CMDB views and can no longer be used in operations.
+
+### Release Hierarchy
+
+Visualize how the current CI participates in a Release. The view lays out the end-to-end chain (CI → Release → Phase → Activity → Task). You can confirm scope, ownership, and impact without drilling through multiple records.
+
+1.  Click **Select Actions** and then Choose **Release Hierarchy**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image56-1.png" style="width:4.875in;height:2.25833in" />
+
+2.  If your browser blocks pop-ups, allow the new tab/window.  
+    The hierarchy opens in a separate tab.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image57.png" style="width:4.875in;height:0.7in" />
+
+3.  A read-only diagram showing nodes such as:
+
+- **CI** (the record you started from)
+
+- **Release** (RLSxxxxx)
+
+- **Phase** (RPHxxxxx)
+
+- **Activity** (RL Axxxxx)
+
+- **Task** (RLTxxxxx)
+
+- Lines represent the relationships between those records.
+
+##### Rescan Now
+
+Run an on-demand discovery against the currently open CI to refresh its attributes and components (useful after a config change or when the last scan is stale). The action triggers a single scan; it doesn’t edit data directly—updates are applied when the scan completes.
+
+1.  Open the CI in CMDB.
+
+2.  Click **Select Actions,** and then select **Rescan Now**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image58-1.png" style="width:4.875in;height:1.46667in" />
+
+3.  A **Rescan Now** dialog opens.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image59-1.png" style="width:4.875in;height:1.28333in" />
+
+4.  Review **IP Address** (pre-filled from the CI). Adjust only if needed.
+
+5.  Choose a **Client** from the drop down.
+
+6.  Select the **Type of scan** (e.g., Certificate scan, Host Ping Scan), as supported in your environment.
+
+7.  Click **Scan**.
+
+8.  The system automatically redirects you to the recent scan page, where you can monitor the progress and results of the scan.
+
+### Components
+
+The **Components tab** displays all sub-elements associated with the selected Configuration Item (CI). These components represent the software, hardware, and runtime entities that make up or run on the CI.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image60.png" style="width:4.875in;height:1.01667in" />
+
+The available component categories include:
+
+- Hard drives
+
+- Installed software
+
+- Listening processes
+
+- Network adapters
+
+- Network storage disks
+
+- Peripheral devices
+
+- Processes
+
+- Services
+
+- Software instances
+
+- Storage disks
+
+- Windows updates
+
+- MMC certificates
+
+- IP connections
+
+The components displayed here are based on the blueprint assigned to the CI. For example, the components in the screenshot reflect a Windows Host blueprint.
+
+Each blueprint type (e.g., Windows Server, Linux Server, Software Application) will have its own set of relevant components.
+
+### Log On Events
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image61-1.png" style="width:4.875in;height:2.49167in" />
+
+- The **Log On Events** tab displays detailed records of user login activity associated with a Configuration Item (CI).
+
+- This feature is useful for **monitoring security access**, **troubleshooting logon issues**, and **tracking usage patterns** over a defined time frame.
+
+- This tab is available for both **Windows Server** and **Windows Host** blueprints.
+
+**How to view Log On Events:**
+
+1.  Click the **Log On Events** tab.
+
+2.  Use the **Client** dropdown to select the applicable system/client’s name.
+
+3.  Choose a time range from the **Duration** dropdown (e.g., 1 day, 7 days, 30 days).
+
+> a\) To enter a specific time range, choose **Custom** and input a manual duration.
+
+4.  Click **Refresh** to load the login data for the selected period.
+
+### ITSM
+
+- The ITSM (IT Service Management) tab displays all ITSM records associated with a Configuration Item (CI).
+
+- This view allows you to track the CI’s involvement in service-related activities across various ITSM modules.
+
+- This integration supports platforms like Virima, ServiceNow, Ivanti, and Jira, with toggles to filter records based on the selected source.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image62-1.png" style="width:4.875in;height:2.29167in" />
+
+Modules included in the ITSM tab:
+
+| **Module**   | **Purpose**                                                       |
+|--------------|-------------------------------------------------------------------|
+| Incidents    | Shows incidents linked to the CI for impact analysis.             |
+| Requests     | Displays service requests involving this CI.                      |
+| Changes      | Lists change records affecting or triggered by this asset.        |
+| Problems     | Shows problem investigations involving the CI.                    |
+| Known Errors | Tracks documented root causes tied to recurring incidents.        |
+| Releases     | Displays planned releases that deploy or affect this CI.          |
+| Knowledge    | Links related knowledge base articles or procedures to the asset. |
+
+**Creating new ITSM records:**
+
+You can initiate a new record directly from this tab:
+
+- Use the platform toggles (Virima, ServiceNow, Ivanti, Jira) in the ITSM tab to select the desired source for incident creation.
+
+- If you select Virima (or another platform) and click **New Incident**, you will be redirected to the respective domain page to create a new incident.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image63-1.png" style="width:4.875in;height:2.44167in" />
+
+- Enter the details, then click **Add** to create a new incident.
+
+- The selected Configuration Item (CI) will be **automatically linked** to the new record.
+
+### Relationships
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image64-1.png" style="width:4.875in;height:1.825in" />
+
+The **Relationships** tab in the CMDB allows users to **view, manage, and establish connections** between a selected Configuration Item (CI) and other assets. These relationships illustrate how one CI **depends on, communicates with, or hosts** another, providing insight into infrastructure and service dependencies.
+
+**What it does:**
+
+The Virima Discovery application automatically detects relationship types, including:
+
+- Installed On
+
+- Component Of
+
+- Runs On
+
+- Connected To
+
+- Communicates With
+
+- Physically Connected To
+
+- Used By
+
+- Attaches
+
+These relationships are essential for **dependency mapping**, **impact analysis**, and **visualizing business services**.
+
+**How to use the Relationships tab:**
+
+1.  Go to ITSM \> Configuration Management \> CMDB.
+
+2.  Select a Configuration Item record. The Details tab opens by default.
+
+3.  Click on the Relationships tab to view existing relationships for that CI.
+
+4.  You can perform the following actions:
+
+> a\) **Add Source**: Create a new source relationship.
+>
+> b\) **Add Target**: Add a new target CI that the asset depends on.
+>
+> c\) **Delete**: Select a row and remove an unwanted relationship.
+>
+> d\) **Business Service Map**: Open a visual view of the relationships.
+
+**To add a relationship:**
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image65-1.png" style="width:4.875in;height:3.025in" />
+
+1.  Click **Add Source** or **Add Target**.
+
+2.  In the Add Relation dialog:
+
+> a\) Choose the asset (source or target).
+>
+> b\) Use the Search field to find the CI.
+>
+> c\) Select a relationship type from the Choose Relationship dropdown (e.g., *Assigned To*, *Belongs To*, *Installed On*).
+
+3.  Click **Add** to create the relationship.
+
+**Related reference:**
+
+For additional automation and background processes related to relationships, refer to the CMDB Process Jobs documentation.
+
+### Audits
+
+The **Audits** tab in the CMDB allows users to define and manage audit schedules for Configuration Items (CIs). Audits ensure the **integrity and accuracy** of CI data through periodic checks.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image66-1.png" style="width:4.875in;height:1.84167in" />
+
+- Click on **New Audit** to add new audit.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image67-1.png" style="width:4.875in;height:1.58333in" />
+
+- Enter the details, then click **Add** to save the new audit.
+
+- Select one audit and click **Delete** to delete the audit.
+
+**Key functionalities:**
+
+- **Audit name**: Assign a meaningful label to indicate the audit's purpose (e.g., "detail check," "OS validation").
+
+- **Add description**: Describe the audit's scope or objective.
+
+- **Assign auditor**: Designate a user responsible for executing or reviewing the audit. Multiple users can be assigned.
+
+- **Set recurring frequency**: Choose how often the audit should recur (daily, weekly, monthly, etc.).
+
+- **Duration (in days)**: Specify the audit's validity duration or completion window.
+
+**Example scenario:**
+
+For an audit named **“detail check”**:
+
+- It will run **daily**.
+
+- It has a **duration of 7 days**.
+
+- The assigned auditor is **Auditor Name**.
+
+- The audit's description is **"check details."**
+
+This setup enables timely verification of asset configurations and promotes regular CI hygiene practices.
+
+### SLA
+
+To set up response and resolution times for any CI (Incident, Request, Change, or Problem) whose Root-Cause blueprint’s SLA should apply, follow these steps:
+
+1.  Open the SLA tab:
+
+    - Click the desired Blueprint.
+
+    - In the Details pane, switch to the SLA tab.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image68-1.png" style="width:4.875in;height:2.73333in" />
+
+2.  Set response and resolution targets:
+
+    - Response Time: Enter the maximum time before the first response.
+
+    - Resolution Time: Enter the total time allowed for full resolution. *Note*: This value must be at least the sum of your response time and any support-level response windows.
+
+3.  Define support-level response windows:
+
+    - In the Support Level fields, specify the response time for each tier (1st, 2nd, 3rd, etc.).
+
+4.  Configure escalation rules:
+
+    1.  **First column**: Choose whether the escalation fires **before** or **after** the specified delay.
+
+    2.  **Second column**: Enter the delay amount (hours/minutes) before notifications are sent.
+
+    3.  **Third column**: Click **Add** (for a new recipient list) or **Update** (to edit an existing one), then select users, roles, groups, or departments to alert.
+
+For each rule, specify when it triggers, how long to wait, and who gets notified:
+
+| **When**         | **Delay**                       | **Notification Recipients**                                                                                         |
+|------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| *Before/After X* | Time duration (e.g. 30 minutes) | Users, roles, groups or departments (select one or many; use the Add/Update buttons to choose or modify recipients) |
+
+5.  Once all fields and escalation rules are set, click **Save** to apply.
+
+### Maintenance
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image69-1.png" style="width:4.875in;height:2.15833in" />
+
+The **Maintenance** tab allows users to schedule, configure, and manage maintenance windows for CIs, ensuring operations such as reboot, shutdown, or patching do not disrupt regular monitoring or trigger false alarms.
+
+- Click on **New CI Maintenance** to create a new maintenance for the CI.
+
+- The system will display the **Add Maintenance** window. Enter the required maintenance information, then click **Add** to save the maintenance.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image70-1.png" style="width:4.875in;height:1.675in" />
+
+**Add Maintenance Window:**
+
+| **Field**     | **Description**                                               |
+|---------------|---------------------------------------------------------------|
+| Name          | Name/label for the maintenance window                         |
+| Description   | Notes or purpose of the scheduled maintenance                 |
+| Is Active     | A checkbox to mark the window as active                       |
+| Start Date    | Beginning date of the maintenance window                      |
+| End Date      | Ending date (can be left blank if “Never Expire” is selected) |
+| Never Expire  | If checked, the maintenance continues until manually ended    |
+| Recurrence    | Frequency (e.g., Daily, Weekly)                               |
+| Start Time    | Start time for the maintenance of each cycle                  |
+| End Time      | End time for the maintenance of each cycle                    |
+| Time Zone     | The relevant time zone for the maintenance scheduling         |
+| Select Client | The client to associate with the maintenance                  |
+
+**Use case**: Properly configuring maintenance windows ensures that automated processes, scans, and monitoring systems exclude known downtime periods, maintaining data accuracy and alert integrity.
+
+### Vulnerability
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image71-1.png" style="width:4.875in;height:1.54167in" />
+
+The **Vulnerability** tab offers a clear view of known security weaknesses and risks for a Configuration Item (CI). It helps identify and prioritize remediation efforts by listing vulnerabilities found during scans or integrations.
+
+**How to use:**
+
+1.  Navigate to **CMDB** and select a CI.
+
+2.  Click the **Vulnerability** tab.
+
+3.  Review CVEs and filter by severity, ID, or publish/modify date.
+
+4.  If no records appear, the CI may have no known vulnerabilities or scanning may be pending.
+
+**Purpose & benefit:**
+
+- Track and manage **security risks** at the CI level.
+
+- Maintain compliance with **vulnerability management policies**.
+
+### Private Properties
+
+The **Private Properties** tab in the Virima CMDB is designed for storing custom or sensitive asset attributes that may not be covered by standard fields. These properties are configured at the blueprint level, allowing organizations to tailor asset records to their unique requirements.
+
+- Users can edit any private property and click **Save** to modify the changes.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image72-1.png" style="width:4.875in;height:1.74167in" />
+
+### **Tasks**
+
+Lists and manages tasks associated with the CI. Users can create new tasks, assign ownership, and track progress.
+
+### **Comments**
+
+Provides a space for administrators or users to add notes, updates, or clarifications related to the CI. This helps in collaboration and record-keeping.
+
+### **Attachments**
+
+Allows uploading and managing supporting files (e.g., documents, configuration files, reports, or screenshots) linked to the CI.
+
+### **History**
+
+Displays a detailed audit trail of all changes made to the CI. Each entry shows the action performed, the date and time of modification, the user who made the change, and the specific attributes that were updated.
+
+Refer to the [Asset Tab Details](https://virima.atlassian.net/wiki/spaces/PM/pages/231112748/Asset+tab+Details) document for details on Tasks, Comments, and Attachment tabs.
+
+## Other Functions and Page Elements
+
+### Records per Page
+
+Click the drop-down list and select the number of records displayed in this window.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image73-1.png" style="width:4.16667in;height:0.94167in" />
+
+| **Control**                   | **Description**                                                                                                                                                                  |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Records per Page dropdown** | Click the drop-down and choose how many records to display—only values in the hundreds (e.g., 100, 200, 300). The list refreshes immediately to show that many entries per page. |
+
+### Auto Refresh
+
+Use this function to update the window at a specific interval of time.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image74-1.gif" style="width:3.9in;height:0.875in" />
+
+- Click the **Auto Refresh** drop-down list and select from one of the following: **None, 20 seconds, 40 seconds, 60 seconds**, or **Custom** (and specify a custom refresh time).
+
+### Personalize Columns
+
+Use this function to personalize the columns displayed in the record window:
+
+1.  While viewing a record list, click the **Personalize Columns** icon.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image75-1.gif" style="width:4.875in;height:1.25in" />
+
+2.  In the **Search for properties** field, enter the name of a property and click the **Search** icon.
+
+3.  The **Search Results** column displays all available columns, marked with a check if selected.
+
+4.  The **Selected Items** column shows all currently selected columns. To add a column, click its name in the Search Results list; it will then appear in the Selected Items list.
+
+5.  Click **Default View** to restore the default settings.
+
+6.  Click **Clear All** to remove all selections and revert to the default view.
+
+7.  Click **Save** to keep the current selections.
+
+8.  Click **Cancel** to discard any changes.
+
+### Manage Filters
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image76-1.png" style="width:4.875in;height:1.9in" />
+
+Filters let you narrow down a large data set to just the records you need. Filters are specific to each user.
+
+#### Apply & Save a Filter
+
+1.  Under the column header, click in the **Filter** field.
+
+2.  Type your search text and press **Enter**. The list refreshes to show matching records.
+
+3.  Click Save Filter.
+
+4.  In the dialog, give your filter a name and click **Save**.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image77-1.png" style="width:4.875in;height:0.86667in" />
+
+You can repeat these steps to create multiple saved filters.
+
+#### Apply or Delete a Saved Filter
+
+1.  Click the **Saved Filter** icon on the toolbar to open the Filters list.
+
+2.  Select a filter to apply it to your data.
+
+<img src="C:\Docs\mdx_format\media\ITAM_CMDB/media/image78-1.png" style="width:4.875in;height:1.05833in" />
+
+3.  *(Optional)* Click **Set as Default** to make it the filter that loads automatically.
+
+4.  To remove a saved filter, click its **Delete** icon.

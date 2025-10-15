@@ -1,0 +1,360 @@
+# Users
+
+- [Overview](#Users-Overview)
+
+- [Users – Access Management](#Users-Users–AccessManagement)
+
+  - [Prerequisites](#Users-Prerequisites)
+
+  - [Navigation](#Users-Navigation)
+
+  - [Creating a New User](#Users-CreatingaNewUser)
+
+    - [New User Fields](#Users-NewUserFields)
+
+    - [User Information Fields](#Users-UserInformationFields)
+
+  - [Importing Users](#Users-ImportingUsers)
+
+  - [Bulk Edit Users](#Users-BulkEditUsers)
+
+  - [Enable MFA for Multiple Users](#Users-EnableMFAforMultipleUsers)
+
+  - [View User Resources](#Users-ViewUserResources)
+
+  - [Deleting Users](#Users-DeletingUsers)
+
+  - [Exporting Users](#Users-ExportingUsers)
+
+- [Access Management – User Details](#Users-AccessManagement–UserDetails)
+
+  - [Accessing User Details](#Users-AccessingUserDetails)
+
+  - [Primary Details (Left Panel)](#Users-PrimaryDetails(LeftPanel))
+
+  - [User Details (Main Panel)](#Users-UserDetails(MainPanel))
+
+  - [Tabs for Extended Management](#Users-TabsforExtendedManagement)
+
+  - [Edit User](#Users-EditUser)
+
+  - [Delete User](#Users-DeleteUser)
+
+  - [Other Functions and Page Elements](#Users-OtherFunctionsandPageElements)
+
+# Overview
+
+The **Users – Access Management** feature in Virima enables administrators to create, import, edit, and manage user accounts within the platform. It provides full control over user attributes, authentication methods, and role-based permissions, ensuring secure and structured access to the system.
+
+Administrators can define key user details such as email, roles, departments, groups, and reporting hierarchy, while also enabling features like **VIP prioritization**, **multi-factor authentication (MFA)**, and **custom landing pages**. Bulk operations, including importing new users and editing multiple records simultaneously, streamline user management for larger environments.
+
+In addition to user creation and updates, the module supports **resource tracking**, allowing administrators to review task assignments, hours worked, and related project activities. Permanent deletion of users is also supported, with safeguards to prevent unintended impacts on reports and data integrity.
+
+# Users – Access Management
+
+The **Users** function in Virima enables administrators to create, import, update, and manage user accounts. It provides options for setting authentication methods, assigning roles, departments, groups, and designations, as well as enabling MFA and managing related resources.
+
+## Prerequisites
+
+- **Role Access permissions** must be set before adding a new user.
+
+## Navigation
+
+- In the main window, go to:  
+  **Admin \> Users \> Users**
+
+<img src="C:\Docs\mdx_format\media\Users/media/image1-1.png" style="width:4.875in;height:1.88333in" />
+
+- The **Access Management** window displays.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image2-1.png" style="width:4.875in;height:2.375in" />
+
+## Creating a New User
+
+1.  From the **Select Actions** drop-down list, choose **New User**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image3-1.png" style="width:4.875in;height:2.21667in" />
+
+2.  Complete the fields as described below.
+
+3.  When all required information is entered, click **Add**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image4-1.png" style="width:4.875in;height:2.41667in" />
+
+### New User Fields
+
+- **Email** – User’s email address.
+
+- **Username** – Login name for the system.
+
+- **Is VIP** – Prioritizes tickets created by the user as **1-Priority (Very High)**.
+
+- **Is Active** – Marks the user as active. If unchecked, login attempts trigger an **Alert**.
+
+- **Enable MFA** – Sends the user to an MFA verification screen.
+
+  - *Email MFA*: Code is sent by email. Users can request **Resend Code**.
+
+  - *Two-Factor Authentication*: Users scan a QR code and verify via Google Authenticator. Click **Verify Token** after entering the code.
+
+  - To disable MFA, click **Reset MFA**.
+
+- **Authentications** – Select the organization’s method: *LDAP, AD, SAML,* or *Normal*.
+
+- **Password** – Set and confirm the password. Use **Show Password** to view it.
+
+### User Information Fields
+
+- **Location** – Assign user location.
+
+- **Roles** – Assign user roles to define responsibilities.
+
+- **Departments** – Associate the user with a department.
+
+- **Groups** – Associate the user with a group.
+
+- **Report To** – Assign reporting manager.
+
+- **Designation** – Assign job designation.
+
+- **Profile Picture** – Upload user photo.
+
+- **Landing Page** – Select the page that appears on login.
+
+- **Language** – Assign the user’s display language.
+
+## Importing Users
+
+1.  From the **Select Actions** drop-down list, choose **Import New User(s)**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image5-1.png" style="width:4.875in;height:1.96667in" />
+
+2.  In the **Attach Data Files** dialog box, browse to the location of the file.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image6-1.png" style="width:4.875in;height:1.34167in" />
+
+3.  Click **Upload**.
+
+## Bulk Edit Users
+
+1.  Select multiple users in the list.
+
+2.  From the **Select Actions** drop-down list, choose **Bulk Edit**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image7-1.png" style="width:4.875in;height:1.95833in" />
+
+3.  In the confirmation window, click **Yes**.
+
+4.  Update fields as required.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image8-1.png" style="width:4.875in;height:2.50833in" />
+
+5.  Click **Update**.
+
+## Enable MFA for Multiple Users
+
+1.  Highlight one or more users.
+
+    - If no users are selected, MFA is enabled for all users.
+
+2.  From the **Select Actions** drop-down list, choose **Enable MFA**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image9-1.png" style="width:4.875in;height:2.175in" />
+
+3.  Click **Yes** or **No** to confirm enabling MFA.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image10-1.png" style="width:4.875in;height:1.60833in" />
+
+4.  To reset MFA, open the user’s profile and click **Reset MFA**.
+
+## View User Resources
+
+1.  From the **Select Actions** drop-down list, choose **View Resources**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image11-1.png" style="width:4.875in;height:2.025in" />
+
+2.  A window displays:
+
+    - Task details (e.g., status, hours, start/end dates).
+
+    - Toggle between **Projects** and **Miscellaneous Tasks**.
+
+    - View reported users by clicking **Reported Users**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image12-1.png" style="width:4.875in;height:1.55in" />
+
+3.  Click **Close** to close.
+
+## Deleting Users
+
+The **Delete** function in the Access Management module allows administrators to permanently remove user accounts from the system. This action cannot be undone, so it should be performed with caution.
+
+1.  **Select the User Record**
+
+    - In the list of users, check the box next to the user(s) you want to delete.
+
+    - Ensure that the correct user(s) are selected, as deletion is permanent.
+
+2.  From the **Select Actions** drop-down list, select **Delete**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image13-1.png" style="width:4.875in;height:1.96667in" />
+
+3.  A confirmation dialog box will appear.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image14-1.png" style="width:4.875in;height:1.49167in" />
+
+4.  In the confirmation popup, click **Yes** to proceed with deletion.
+
+    - Click **No** if you want to cancel the action.
+
+- Deletion is **permanent** and may affect other functions such as reports, configured fields, or selectable lists where the user account was referenced.
+
+- Carefully verify before proceeding.
+
+## Exporting Users
+
+The **Export** option allows administrators to download user details into an Excel spreadsheet for reporting, auditing, or backup purposes.
+
+1.  From the **Select Actions** dropdown menu, choose **Export**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image15-1.png" style="width:4.875in;height:1.98333in" />
+
+2.  A confirmation message will appear.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image16-1.png" style="width:4.875in;height:1.65in" />
+
+8.  Click **Continue** to proceed, or **Cancel** to abort the export.
+
+9.  Once confirmed, a **Success Message** is displayed.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image17-1.png" style="width:4.875in;height:1.45833in" />
+
+10. Click **OK** to close the message
+
+# Access Management – User Details
+
+The **User Details** page in Access Management provides administrators with a centralized interface to view, edit, and manage individual user records. It displays key information, account status, and configurable options for authentication, role assignment, and personalization.
+
+## Accessing User Details
+
+1.  Navigate to **Admin \> Users \> Users**.
+
+2.  The **Access Management** window opens, displaying the list of users.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image2-1.png" style="width:4.875in;height:2.375in" />
+
+3.  From the list, click on the desired **user record**.
+
+4.  The **User Details** page opens, showing detailed information and multiple management tabs.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image18-1.png" style="width:4.875in;height:2.54167in" />
+
+## Primary Details (Left Panel)
+
+- **Name, Email, Phone** – Displays basic user identity details.
+
+- **Profile Picture** – Option to upload/update a profile picture for the user.
+
+## User Details (Main Panel)
+
+The **Details tab** includes editable fields:
+
+- **ID** – Unique system identifier for the user.
+
+- **Created On / Created By** – Displays when and by whom the user was created.
+
+- **Last Modified On / By** – Tracks the latest updates.
+
+- **Email & Username** – Login credentials for system access.
+
+- **Is VIP** – Marks the user as a VIP; ITSM tickets raised by them default to **Priority 1 (Very High)**.
+
+- **Is Active** – Enables or disables the user’s account.
+
+- **Enable MFA** – Activates **Multi-Factor Authentication** (via email code or authenticator app).
+
+- **Normal Authentication** – Lists authentication method (LDAP, AD, SAML, or Normal).
+
+- **Password / Change Password** – Manage or reset the login password.
+
+- **First Name / Last Name / Display Name** – User identity details.
+
+- **Phone / Address** – Enter or update contact details.
+
+- **Location** – Click **Add** to assign a location.
+
+- **Roles** – Click **Add** or **Update** to modify role assignments (e.g., Admin, User).
+
+- **Departments** – Add or update department association.
+
+- **Groups** – Add the user to groups.
+
+> **Note**: Users cannot be removed from groups where they are managers.
+
+- **Report To** – Specify the manager/supervisor for this user.
+
+- **Designation** – Add the user’s designation.
+
+- **Landing Page** – Select the page displayed when the user logs in.
+
+- **Language** – Choose the preferred application language.
+
+## Tabs for Extended Management
+
+- **Email Preferences** – Configure which system notifications the user receives.
+
+- **Tasks** – View or assign tasks linked to the user.
+
+- **Comments** – Add or view notes related to the user.
+
+- **Attachments** – Upload files (e.g., ID proofs, HR forms).
+
+- **History** – Shows audit trail of modifications.
+
+- **Inbox** – Manage user-related messages.
+
+- **Owned CIs** – Displays Configuration Items owned by the user.
+
+## Edit User
+
+1.  Navigate to the **Users** list.
+
+2.  Click the record to edit; the details window opens.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image18-1.png" style="width:4.875in;height:2.54167in" />
+
+3.  Modify fields as required.
+
+4.  Click **Save**.
+
+**Additional Options (may vary by function):**
+
+- Add **Tasks, Comments, Attachments**.
+
+- View **History**.
+
+- Configure **Email Preferences** for notifications.
+
+- Open **Inbox** to manage email messages.
+
+## Delete User
+
+Deletion is permanent and cannot be undone. It may affect reports, selectable fields, and data in other modules.
+
+1.  Select the record to delete.
+
+2.  From the **Select Actions** drop-down list, choose **Delete**.
+
+<img src="C:\Docs\mdx_format\media\Users/media/image19-1.png" style="width:4.875in;height:2.28333in" />
+
+3.  If prompted, confirm (e.g., click **OK** or **Continue**).
+
+## Other Functions and Page Elements
+
+- **Records per Page** – Adjust number of records displayed.
+
+- **Auto Refresh** – Enable automatic data refresh.
+
+- **Personalize Columns** – Customize visible columns.
+
+- **Saved Filters** – Save and apply filters for quick access.

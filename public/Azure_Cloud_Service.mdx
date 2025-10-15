@@ -1,0 +1,637 @@
+# Azure Cloud Service
+
+- [Executive Summary](#AzureCloudService-ExecutiveSummary)
+
+- [Service Overview](#AzureCloudService-ServiceOverview)
+
+  - [Azure Functions](#AzureCloudService-AzureFunctions)
+
+  - [Azure Kubernetes Service (AKS)](#AzureCloudService-AzureKubernetesServic)
+
+    - [AKS Cluster](#AzureCloudService-AKSCluster)
+
+    - [AKS Agent Pool](#AzureCloudService-AKSAgentPool)
+
+    - [AKS Node](#AzureCloudService-AKSNode)
+
+  - [Azure Database for PostgreSQL](#AzureCloudService-AzureDatabaseforPostg)
+
+    - [Azure PostgreSQL Database Component](#AzureCloudService-AzurePostgreSQLDataba)
+
+  - [Azure Cosmos DB](#AzureCloudService-AzureCosmosDB)
+
+    - [Azure Cosmos DB Database Component](#AzureCloudService-AzureCosmosDBDatabase)
+
+  - [Azure Neo4j](#AzureCloudService-AzureNeo4j)
+
+  - [Azure Storage Accounts](#AzureCloudService-AzureStorageAccounts)
+
+  - [Azure Key Vault](#AzureCloudService-AzureKeyVault)
+
+  - [Implementation Recommendations](#AzureCloudService-ImplementationRecomme)
+
+- [Conclusion](#AzureCloudService-Conclusion)
+
+# **Executive Summary**
+
+This document provides a comprehensive analysis of Azure cloud services integrated with Virima application, detailing existing property mappings and identifying opportunities for custom property creation to capture additional service-specific attributes.
+
+# **Service Overview**
+
+The following Azure services are analyzed:
+
+1.  **Azure Functions** - Serverless compute service
+
+2.  **Azure Kubernetes Service (AKS)** - Managed Kubernetes service (with Agent Pools and Nodes)
+
+3.  **Azure Database for PostgreSQL** - Managed PostgreSQL database service
+
+4.  **Azure Cosmos DB** - Multi-model distributed database service
+
+5.  **Azure Neo4j** - Graph database service
+
+6.  **Azure Storage Accounts** - Cloud storage service
+
+7.  **Azure Key Vault** - Key and secret management service
+
+## Azure Functions
+
+**Currently Mapped Properties**
+
+- **blueprint** → "Azure Function App"
+
+- **Asset Name**
+
+- **Service ID**
+
+- **Subscription Id**
+
+- **Resource Group**
+
+- **Tags**
+
+- **Host Name** → defaultHostName
+
+- **Virtual IP Address** → inboundIPAddress
+
+- **Virtual IP Addresses** → possibleOutboundIpAddresses
+
+- **Type**
+
+**Custom Properties Supported**
+
+| **Property Name** | **Data Type** | **Description**               | **Source Field** |
+|-------------------|---------------|-------------------------------|------------------|
+| Function State    | String        | Current state of function app | state            |
+
+## **Azure Kubernetes Service (AKS)**
+
+### **AKS Cluster**
+
+**Currently Mapped Properties**
+
+- **Cluster Name**
+
+- **Region**
+
+- **AKS Tier**
+
+- **Service ID**
+
+- **Relations**
+
+- **State**
+
+- **Version**
+
+- **Cluster FQDN**
+
+- **Software Version**
+
+- **Host Name**
+
+- **Status**
+
+- **IP Address**
+
+- **CIDR block**
+
+- **Instance Type**
+
+- **Operating System**
+
+- **Disk Size(GB)**
+
+- **Availability Zone**
+
+- **Resource Group**
+
+- **Subscription Id**
+
+- **Created On**
+
+- **Last Modified On**
+
+**Custom Properties Supported**
+
+| **Property Name**                        | **Data Type** | **Description**               | **Source Field**                            |
+|------------------------------------------|---------------|-------------------------------|---------------------------------------------|
+| Node Resource Group                      | String        | Infrastructure resource group | nodeResourceGroup                           |
+| RBAC Enabled                             | Boolean       | Role-based access control     | enableRBAC                                  |
+| Workload Identity Enabled                | Boolean       | Workload identity feature     | securityProfile.workloadIdentity.enable     |
+| Image Cleaner Enabled                    | Boolean       | Automatic image cleanup       | securityProfile.imageCleaner.enabled        |
+| Image Cleanup Interval                   | Integer       | Cleanup interval in hours     | securityProfile.imageCleaner.intervalHours  |
+| Local Accounts Disabled                  | Boolean       | Local account access          | disableLocalAccounts                        |
+| Support Plan                             | String        | Support tier                  | supportPlan                                 |
+| Service Principal Client ID              | String        | Service principal ID          | servicePrincipalProfile.clientId            |
+| Load Balancer SKU                        | String        | Load balancer tier            | networkProfile.loadBalancerSku              |
+| Network Plugin                           | String        | CNI plugin type               | networkProfile.networkPlugin                |
+| Network Plugin Mode                      | String        | Plugin operation mode         | networkProfile.networkPluginMode            |
+| Network Dataplane                        | String        | Network data plane type       | networkDataplane                            |
+| DNS Service IP                           | String        | Internal DNS service IP       | networkProfile.dnsServiceIP                 |
+| Outbound Type                            | String        | Egress configuration          | networkProfile.outboundType                 |
+| Service CIDRs                            | String        | Service IP ranges             | serviceCidrs                                |
+| Pod CIDRs                                | String        | Pod IP ranges                 | podCidrs                                    |
+| Managed Outbound IPs Count               | Integer       | Number of managed IPs         | managedOutboundIPs.count                    |
+| Effective Outbound IPs Count             | Integer       | Active outbound IPs           | effectiveOutboundIPs.length                 |
+| IP Families                              | String        | IPv4/IPv6 configuration       | ipFamilies                                  |
+| Kubelet Identity Resource ID             | String        | Kubelet identity              | identityProfile.kubeletIdentity.resourceId  |
+| Kubelet Identity Client ID               | String        | Kubelet client ID             | identityProfile.kubeletIdentity.clientId    |
+| Kubelet Identity Object ID               | String        | Kubelet object ID             | identityProfile.kubeletIdentity.objectId    |
+| Azure Policy Enabled                     | Boolean       | Policy addon status           | azurepolicy.enabled                         |
+| Key Vault Secrets Provider Enabled       | Boolean       | CSI secrets driver            | azureKeyvaultSecretsProvider.enabled        |
+| Monitoring Enabled                       | Boolean       | Container insights            | omsagent.enabled                            |
+| Upgrade Channel                          | String        | Cluster upgrade channel       | autoUpgradeProfile.upgradeChannel           |
+| Node OS Upgrade Channel                  | String        | Node OS upgrades              | autoUpgradeProfile.nodeOSUpgradeChannel     |
+| Disk CSI Driver Enabled                  | Boolean       | Azure disk CSI driver         | diskCSIDriver.enabled                       |
+| File CSI Driver Enabled                  | Boolean       | Azure file CSI driver         | fileCSIDriver.enabled                       |
+| Snapshot Controller Enabled              | Boolean       | Volume snapshots              | snapshotController.enabled                  |
+| OIDC Issuer Enabled                      | Boolean       | OIDC issuer status            | oidcIssuerProfile.enabled                   |
+| OIDC Issuer URL                          | String        | OIDC issuer endpoint          | oidcIssuerProfile.issuerUrl                 |
+| Azure Monitor Metrics Enabled            | Boolean       | Prometheus metrics            | azureMonitorProfile.metrics.enabled         |
+| Kube State Metrics Labels Allowlist      | String        | Allowed metric labels         | kubeStateMetrics.metricLabelsAllowlist      |
+| Kube State Metrics Annotations Allowlist | String        | Allowed annotations           | kubeStateMetrics.metricAnnotationsAllowList |
+| Windows Admin Username                   | String        | Windows admin user            | windowsProfile.adminUsername                |
+| Windows CSI Proxy Enabled                | Boolean       | Windows CSI proxy             | windowsProfile.enableCSIProxy               |
+| Current Kubernetes Version               | String        | Current K8s version           | currentKubernetesVersion                    |
+| Max Agent Pools                          | Integer       | Maximum node pools            | maxAgentPools                               |
+| Resource UID                             | String        | Resource unique ID            | resourceUID                                 |
+| DNS Prefix                               | String        | DNS prefix for FQDN           | dnsPrefix                                   |
+| Azure Portal FQDN                        | String        | Portal access FQDN            | azurePortalFQDN                             |
+| Workload Auto Scaler Configured          | Boolean       | Workload autoscaler           | workloadAutoScalerProfile                   |
+| Node VM Size                             | String        | Default node VM size          | agentPoolProfiles.vmSize                    |
+| SKU Tier                                 | String        | Service tier                  | sku.tier                                    |
+| SKU Name                                 | String        | SKU identifier                | sku.name                                    |
+| Identity Type                            | String        | Managed identity type         | identity.type                               |
+| Identity Tenant ID                       | String        | AAD tenant ID                 | identity.tenantId                           |
+| Identity Principal ID                    | String        | Service principal ID          | identity.principalId                        |
+
+### **AKS Agent Pool**
+
+**Currently Mapped Properties**
+
+- **Asset Name**
+
+- **Host Name**
+
+- **Version**
+
+- **Service ID**
+
+- **VM Size**
+
+- **Node Count**
+
+- **OS Type**
+
+- **Disk Type**
+
+- **Status**
+
+- **CPU Count**
+
+- **OS Major Version**
+
+- **Disk Size(GB)**
+
+- **Instance Type**
+
+- **Publisher**
+
+- **Software Version**
+
+- **Device Location**
+
+- **Subscription Id**
+
+- **Resource Group**
+
+**Custom Properties Supported**
+
+| **Property Name**          | **Data Type** | **Description**      | **Source Field**                             |
+|----------------------------|---------------|----------------------|----------------------------------------------|
+| Agent Pool Name            | String        | Pool identifier      | name                                         |
+| Agent Pool Type            | String        | System or User pool  | agentPoolProfiles.mode                       |
+| OS SKU                     | String        | Operating system SKU | agentPoolProfiles.osSKU                      |
+| Kubernetes Version         | String        | K8s version          | agentPoolProfiles.orchestratorVersion        |
+| Max Pods Per Node          | Integer       | Pod density limit    | agentPoolProfiles.maxPods                    |
+| Current Kubernetes Version | String        | Running K8s version  | agentPoolProfiles.currentOrchestratorVersion |
+| Node Image Version         | String        | VM image version     | agentPoolProfiles.nodeImageVersion           |
+| Auto Scaling Enabled       | Boolean       | Autoscaler status    | agentPoolProfiles.enableAutoScaling          |
+| Node Public IP Enabled     | Boolean       | Public IP assignment | agentPoolProfiles.enableNodePublicIP         |
+| FIPS Enabled               | Boolean       | FIPS compliance      | agentPoolProfiles.enableFIPS                 |
+| Scale Down Mode            | String        | Scale-down behavior  | agentPoolProfiles.scaleDownMode              |
+| Kubelet Disk Type          | String        | Kubelet storage type | agentPoolProfiles.kubeletDiskType            |
+| Availability Zones         | String        | Zone distribution    | Availability Zone                            |
+| Power State                | String        | Current power state  | agentPoolProfiles.powerState.code            |
+| Max Surge                  | String        | Upgrade surge config | agentPoolProfiles.upgradeSettings.maxSurge   |
+
+### **AKS Node**
+
+**Currently Mapped Properties**
+
+- **Host Name**
+
+- **Asset Name**
+
+- **Type**
+
+- **Description**
+
+- **Instance ID**
+
+- **VM Size**
+
+- **OS Type**
+
+- **Disk Type**
+
+- **Node Status**
+
+- **Disk Size(GB)**
+
+- **Availability Zone**
+
+**Custom Properties Supported**
+
+| **Property Name**      | **Data Type** | **Description**      | **Source Field**                             |
+|------------------------|---------------|----------------------|----------------------------------------------|
+| OS SKU                 | String        | Operating system SKU | agentPoolProfiles.osSKU                      |
+| Max Pods               | Integer       | Maximum pod count    | agentPoolProfiles.maxPods                    |
+| Kubernetes Version     | String        | Node K8s version     | agentPoolProfiles.currentOrchestratorVersion |
+| Node Image Version     | String        | VM image version     | agentPoolProfiles.nodeImageVersion           |
+| Node Role              | String        | System or User       | agentPoolProfiles.mode                       |
+| Node Public IP Enabled | Boolean       | Public IP status     | agentPoolProfiles.enableNodePublicIP         |
+| Kubelet Disk Type      | String        | Kubelet storage      | agentPoolProfiles.kubeletDiskType            |
+| Scale Down Mode        | String        | Deallocation mode    | agentPoolProfiles.scaleDownMode              |
+| Auto Scaling Enabled   | Boolean       | In autoscale pool    | agentPoolProfiles.enableAutoScaling          |
+| FIPS Enabled           | Boolean       | FIPS compliance      | agentPoolProfiles.enableFIPS                 |
+
+## **Azure Database for PostgreSQL**
+
+**Currently Mapped Properties**
+
+- **blueprint**
+
+- **Service ID**
+
+- **Relations**
+
+- **Asset Name**
+
+- **Database Name**
+
+- **Region**
+
+- **Service Tier**
+
+- **Status**
+
+- **Version**
+
+- **Backup Retention Period**
+
+- **Availability Zone**
+
+- **Disk Size(GB)**
+
+- **Volume IOPs**
+
+- **Host Name**
+
+- **Resource Group**
+
+- **Subscription Id**
+
+- **Server Name**
+
+- **Instance Type**
+
+**Custom Properties Supported**
+
+| **Property Name**         | **Data Type** | **Description**             | **Source Field**         |
+|---------------------------|---------------|-----------------------------|--------------------------|
+| SKU Name                  | String        | Service tier identifier     | sku.name                 |
+| FQDN                      | String        | Fully qualified domain name | fullyQualifiedDomainName |
+| Administrator Login       | String        | Admin username              | administratorLogin       |
+| Storage Size(GB)          | Integer       | Storage capacity            | storage.storageSizeGB    |
+| Storage Auto Grow         | String        | Auto-grow setting           | storage.autoGrow         |
+| Geo Redundant Backup      | String        | Geo-redundancy status       | geoRedundantBackup       |
+| Public Network Access     | String        | Public access setting       | publicNetworkAccess      |
+| Replication Role          | String        | Primary/Replica role        | replicationRole          |
+| Replica Capacity          | Integer       | Number of replicas          | replicaCapacity          |
+| HA Mode                   | String        | High availability mode      | highAvailability.mode    |
+| HA State                  | String        | HA current state            | highAvailability.state   |
+| Custom Maintenance Window | String        | Maintenance schedule        | customWindow             |
+| Maintenance Day           | Integer       | Day of week                 | dayOfWeek                |
+| Maintenance Start Hour    | Integer       | Start hour                  | maintenanceStartHour     |
+| Maintenance Start Minute  | Integer       | Start minute                | maintenanceStartMinute   |
+| Minor Version             | String        | PostgreSQL minor version    | minorVersion             |
+| Created On                | String        | Creation timestamp          | systemData.createdAt     |
+
+### **Azure PostgreSQL Database Component**
+
+**Currently Mapped Properties**
+
+- **Database Name**
+
+- **Asset Name**
+
+- **Type**
+
+- **Description**
+
+- **Server Name**
+
+- **Resource Group**
+
+**Custom Properties Supported**
+
+| **Property Name** | **Data Type** | **Description**        | **Source Field** |
+|-------------------|---------------|------------------------|------------------|
+| Character Set     | String        | Database character set | charset          |
+| Collation         | String        | Database collation     | collation        |
+
+## **Azure Cosmos DB**
+
+**Currently Mapped Properties**
+
+- **blueprint**
+
+- **Service ID**
+
+- **Relations**
+
+- **Database Name**
+
+- **Region**
+
+- **SQL Endpoint**
+
+- **Type**
+
+- **Status**
+
+- **Server IP Address**
+
+- **Software Version**
+
+- **Node Count**
+
+- **Disk Size(GB)**
+
+- **Protocol**
+
+- **Instance Id**
+
+**Custom Properties Supported**
+
+| **Property Name**         | **Data Type** | **Description**            | **Source Field**        |
+|---------------------------|---------------|----------------------------|-------------------------|
+| Created On                | String        | Creation timestamp         | createdAt               |
+| Document Endpoint         | String        | Primary endpoint           | documentEndpoint        |
+| Provisioning State        | String        | Current provisioning state | provisioningState       |
+| Enabled API Types         | String        | Enabled APIs               | enabledApiTypes         |
+| Default Consistency Level | String        | Consistency policy         | defaultConsistencyLevel |
+| SKU                       | String        | Service tier               | sku                     |
+
+### **Azure Cosmos DB Database Component**
+
+**Currently Mapped Properties**
+
+- **Database Name**
+
+- **Asset Name**
+
+- **Type**
+
+- **Description**
+
+- **Account Name**
+
+**Custom Properties Supported**
+
+| **Property Name** | **Data Type** | **Description**     | **Source Field** |
+|-------------------|---------------|---------------------|------------------|
+| API Type          | String        | Database API type   | apiType          |
+| Database ID       | String        | Database identifier | databaseId       |
+
+## **Azure Neo4j**
+
+**Currently Mapped Properties**
+
+- **blueprint**
+
+- **Service ID**
+
+- **Relations**
+
+- **OS Type**
+
+- **Memory(GB)**
+
+- **IP Address**
+
+- **Local FQDN**
+
+**Custom Properties Supported**
+
+| **Property Name**  | **Data Type** | **Description**            | **Source Field**  |
+|--------------------|---------------|----------------------------|-------------------|
+| Provisioning State | String        | Current provisioning state | provisioningState |
+| Computer Username  | String        | Computer name              | computerName      |
+| Admin Username     | String        | Administrator username     | adminUsername     |
+| OS Disk Name       | String        | Operating system disk      | osDisk.name       |
+
+## **Azure Storage Accounts**
+
+**Currently Mapped Properties**
+
+- **blueprint**
+
+- **Service ID**
+
+- **Relations**
+
+- **Host Name**
+
+- **Region**
+
+- **Type** → kind
+
+- **Status** → statusOfPrimary
+
+- **Creation Date**
+
+- **Service Type**
+
+- **Asset Name**
+
+- **SQL Endpoint**
+
+**Custom Properties Supported**
+
+| **Property Name**                 | **Data Type** | **Description**          | **Source Field**                  |
+|-----------------------------------|---------------|--------------------------|-----------------------------------|
+| Access Tier                       | String        | Hot/Cool/Archive         | accessTier                        |
+| Encryption Key Source             | String        | Encryption key type      | encryption.keySource              |
+| HTTPS Traffic Only                | Boolean       | Require secure transfer  | supportsHttpsTrafficOnly          |
+| Minimum TLS Version               | String        | Minimum TLS version      | minimumTlsVersion                 |
+| Allow Blob Public Access          | Boolean       | Public blob access       | allowBlobPublicAccess             |
+| Allow Cross Tenant Replication    | Boolean       | Cross-tenant replication | allowCrossTenantReplication       |
+| Allow Shared Key Access           | Boolean       | Shared key auth enabled  | allowSharedKeyAccess              |
+| Default to OAuth Authentication   | Boolean       | OAuth default            | defaultToOAuthAuthentication      |
+| Public Network Access             | String        | Public access setting    | publicNetworkAccess               |
+| Key1 Creation Time                | String        | Primary key created      | keyCreationTime.key1              |
+| Key2 Creation Time                | String        | Secondary key created    | keyCreationTime.key2              |
+| Require Infrastructure Encryption | Boolean       | Double encryption        | requireInfrastructureEncryption   |
+| Blob Encryption Enabled           | Boolean       | Blob encryption status   | blob.enabled                      |
+| Blob Encryption Key Type          | String        | Blob encryption type     | blob.keyType                      |
+| Blob Encryption Last Enabled      | String        | Blob encryption date     | blob.lastEnabledTime              |
+| File Encryption Enabled           | Boolean       | File encryption status   | file.enabled                      |
+| File Encryption Key Type          | String        | File encryption type     | file.keyType                      |
+| File Encryption Last Enabled      | String        | File encryption date     | file.lastEnabledTime              |
+| Queue Encryption Enabled          | Boolean       | Queue encryption status  | queue.enabled                     |
+| Queue Encryption Key Type         | String        | Queue encryption type    | queue.keyType                     |
+| Table Encryption Key Type         | String        | Table encryption type    | table.keyType                     |
+| Network ACL Bypass                | String        | Network ACL bypass       | networkAcls.bypass                |
+| Network ACL Default Action        | String        | Default network action   | networkAcls.defaultAction         |
+| IP Rules Count                    | Integer       | Number of IP rules       | ipRules.length                    |
+| IP Rules                          | String        | Allowed IP addresses     | ipRules                           |
+| VNet Rules Count                  | Integer       | Number of VNet rules     | vnetRules.count                   |
+| VNet Rules                        | String        | Virtual network rules    | vnetRules                         |
+| IPv6 Rules Count                  | Integer       | Number of IPv6 rules     | ipv6Rules.count                   |
+| Private Endpoint Count            | Integer       | Private endpoint count   | privateEndpointConnections.length |
+| Private Endpoints                 | String        | Private endpoint details | privateEndpointConnections        |
+| Large File Shares State           | String        | Large file share status  | largeFileSharesState              |
+
+## **Azure Key Vault**
+
+**Currently Mapped Properties**
+
+- **Host Name**
+
+- **Region**
+
+- **Service ID**
+
+- **Relations**
+
+- **Asset Name**
+
+- **Vault URI**
+
+- **Website Url**
+
+- **Status**
+
+- **Type**
+
+- **Resource Group**
+
+- **Subscription Id**
+
+- **Server Name**
+
+**Custom Properties Supported**
+
+| **Property Name**               | **Data Type** | **Description**         | **Source Field**                |
+|---------------------------------|---------------|-------------------------|---------------------------------|
+| Provisioning State              | String        | Current state           | provisioningState               |
+| Tenant ID                       | String        | Azure AD tenant         | tenantId                        |
+| SKU Name                        | String        | Vault SKU               | sku.name                        |
+| SKU Family                      | String        | SKU family              | sku.family                      |
+| Enabled For Deployment          | Boolean       | VM deployment enabled   | enabledForDeployment            |
+| Enabled For Template Deployment | Boolean       | ARM template enabled    | enabledForTemplateDeployment    |
+| Enabled For Disk Encryption     | Boolean       | Disk encryption enabled | enabledForDiskEncryption        |
+| Soft Delete Enabled             | Boolean       | Soft delete protection  | enableSoftDelete                |
+| Soft Delete Retention Days      | Integer       | Retention period        | softDeleteRetentionInDays       |
+| Access Policies Count           | Integer       | Number of policies      | accessPolicies.length           |
+| Network Default Action          | String        | Default network action  | networkAcls.defaultAction       |
+| Network Bypass                  | String        | Network bypass settings | networkAcls.bypass              |
+| IP Rules Count                  | Integer       | Number of IP rules      | networkAcls.ipRules             |
+| VNet Rules Count                | Integer       | Number of VNet rules    | networkAcls.virtualNetworkRules |
+| Last Modified On                | String        | Last modification       | lastModifiedAt                  |
+| Created On                      | String        | Creation timestamp      | createdAt                       |
+
+## **Implementation Recommendations**
+
+**Priority 1: Core Operational Properties**
+
+Create custom properties that are essential for daily operations:
+
+- Runtime configurations
+
+- Resource limits and capacities
+
+- Health and monitoring configurations
+
+- Network configurations
+
+**Priority 2: Security and Compliance**
+
+Add properties for security governance:
+
+- Identity and access management settings
+
+- Encryption configurations
+
+- Network security settings
+
+- Compliance-related properties
+
+**Priority 3: Performance and Cost Optimization**
+
+Include properties for optimization:
+
+- Auto-scaling configurations
+
+- SKU and pricing tiers
+
+- Resource utilization settings
+
+- Performance-related configurations
+
+**Custom Property Naming Convention**
+
+- Use consistent naming: \<Service\>\_\<Property\>
+
+- Example: AKS_NetworkPlugin, Storage_EncryptionKeySource
+
+- Group related properties with common prefixes
+
+**Data Type Recommendations**
+
+- Use appropriate data types for validation
+
+- String for text values and enumerations
+
+- Integer for counts and numeric limits
+
+- Boolean for enabled/disabled flags
+
+- DateTime for timestamps (use String if specified in source)
+
+# **Conclusion**
+
+This mapping provides a foundation for extending

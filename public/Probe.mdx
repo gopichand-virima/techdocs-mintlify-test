@@ -1,0 +1,228 @@
+# Probe
+
+- [Overview](#Probe-Overview)
+
+- [Probe](#Probe-Probe)
+
+  - [Overview of Probe Functionality](#Probe-OverviewofProbeFunctionality)
+
+  - [Accessing Probes Page](#Probe-AccessingProbesPage)
+
+  - [Managing Probe](#Probe-ManagingProbe)
+
+    - [Creating a New Probe](#Probe-CreatingaNewProbe)
+
+    - [Deleting a Probe](#Probe-DeletingaProbe)
+
+    - [Exporting a Probe](#Probe-ExportingaProbe)
+
+    - [Editing a Probe](#Probe-EditingaProbe)
+
+      - [Extra Features When Editing Records](#Probe-ExtraFeaturesWhenEditingRecords)
+
+      - [Other Functions and Page Elements](#Probe-OtherFunctionsandPageElements)
+
+        - [Auto Refresh](#Probe-AutoRefresh)
+
+        - [Personalize Columns](#Probe-PersonalizeColumns)
+
+        - [Records per Page](#Probe-RecordsperPage)
+
+        - [Saved Filters](#Probe-SavedFilters)
+
+# Overview
+
+Virima **Probes** and **Probe Workflows** automate deep, context-aware discovery across Windows, Linux, SQL and other platforms to keep the CMDB complete and current. Probes are configurable scripts (PowerShell, WMI, SQL, shell, etc.) that Sensors trigger intelligently to collect targeted system, network, and performance data; Probe Workflows organize these steps into repeatable sequences for consistent, auditable execution. Results—including outputs and timestamps—flow directly into asset records, enabling accurate inventory, faster troubleshooting, and scalable operations. This guide shows how to access and manage probes and workflows, create and customize scripts, associate probes with sensors for dynamic execution, and integrate outcomes with the CMDB for visibility and control.
+
+# Probe
+
+## Overview of Probe Functionality
+
+A **probe** is a set of commands executed on a remote host, guided by a **Probe Workflow**. Probe types include:
+
+| **Probe Type**     | **Description**                                 |
+|--------------------|-------------------------------------------------|
+| Nmap Probe         | Network discovery and port scanning             |
+| Linux System Probe | Shell commands for OS-level info on Linux hosts |
+| Windows OS Probe   | PowerShell/WMI for Windows system data          |
+| SQL Probe          | Database queries for configuration/status       |
+| SNMP Probe         | SNMP communication for network device data      |
+
+Probes are associated with **Sensors** to determine execution timing and targets.
+
+## Accessing Probes Page
+
+Within this section, you can:
+
+- View and filter the list of existing probes
+
+- Create new probes, either from templates or by writing custom scripts
+
+- Assign probes to specific sensors for targeted execution
+
+- Review details such as probe IDs, scripts, outputs, and current statuses
+
+To access and manage probes in Virima:
+
+**Navigate to:**  
+Main Menu → **Admin → Discovery → Probes**
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image1-1.png" style="width:4.875in;height:2.09167in" />
+
+The **Probes** page opens with columns like **Name**, **Description**, **Probe Type**, and **Sensor**.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image2-1.png" style="width:4.875in;height:2.4in" />
+
+## Managing Probe
+
+On the **Probes** page, use the **Select Actions** dropdown to create new probes (from scratch or templates and assign a sensor), delete selected probes (after verifying they aren’t used by sensors or workflows), or export selected or filtered probes for download.
+
+### Creating a New Probe
+
+1.  From the **Select Actions** dropdown, choose **New Probe**.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image3-1.png" style="width:4.875in;height:1.45833in" />
+
+2.  Enter a **Name** and **Description**.
+
+3.  Select a **Type** from the dropdown.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image4-1.png" style="width:4.875in;height:1.90833in" />
+
+4.  Select a **Sensor** from the dropdowns.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image5-1.png" style="width:4.875in;height:2.04167in" />
+
+5.  Enter a **Command** (for SSH/Native types).
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image6-1.png" style="width:4.875in;height:1.50833in" />
+
+5.  Click **Add** to save.
+
+### Deleting a Probe
+
+- Select the probe(s) to remove.
+
+- Click **Select Actions** and choose **Delete**.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image7-1.png" style="width:4.875in;height:1.375in" />
+
+- Type Delete to confirm or click **Cancel** to abort.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image8-1.png" style="width:4.875in;height:1.71667in" />
+
+Deletion is irreversible and may impact other parts of the application.
+
+### Exporting a Probe
+
+- Use column filters to narrow the list, or tick checkboxes to select specific probes.
+
+- Click **Select Actions → Export**.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image9-1.png" style="width:4.875in;height:1.36667in" />
+
+- In the **Confirmation** dialog, click **Continue**.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image10-1.png" style="width:4.875in;height:1.56667in" />
+
+- A **Success Message** confirms export has started in the background.
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image11-1.png" style="width:4.875in;height:1.375in" />
+
+- Open the link in the notification email to download the Excel file.
+
+### Editing a Probe
+
+1.  Select the record to edit (click the line).
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image12-1.png" style="width:4.875in;height:1.99167in" />
+
+3.  Make necessary changes in the dialog box.
+
+4.  Click **Save** to confirm.
+
+#### Extra Features When Editing Records
+
+Depending on the screen and record type, you may see additional options such as:
+
+- **Adding Tasks, Comments, or Attachments**
+
+- **Viewing the History of the Record**
+
+Not every function will display all these options. The available features depend on the type of record and your current location in the system.
+
+For more information, refer the [Tab Details](https://virima.atlassian.net/wiki/spaces/PM/pages/231112748/Asset+tab+Details?atlOrigin=eyJpIjoiNTAzMTdjYTU0NTViNDAyMzgxMzdkMjNjOTQxYjRiNmQiLCJwIjoiYyJ9) document.
+
+#### Other Functions and Page Elements
+
+##### Auto Refresh
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image13-1.png" style="width:4.875in;height:2.06667in" />
+
+| **Feature**           | **Details**                                                          |
+|-----------------------|----------------------------------------------------------------------|
+| Purpose               | Automatically updates the screen to reflect real-time data changes   |
+| Configuration Options | None (manual refresh), 20s, 40s, 60s, Custom (user-defined interval) |
+| Benefit               | Ensures users view the most recent data without manual action        |
+
+##### Personalize Columns
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image14-1.png" style="width:4.875in;height:3.075in" />
+
+**Purpose:** Customize which columns appear in record views.
+
+**How to Use:**
+
+1.  Click the **Personalize Columns** icon.
+
+2.  Search for properties using the search box.
+
+3.  Move desired fields from "Search Results" to "Selected Items".
+
+4.  Use **Default View** to reset to system settings.
+
+5.  Use **Clear All** to remove all selections.
+
+6.  Click **Save** to apply or **Cancel** to discard changes.
+
+Column options are predefined by the system and not user-modifiable.
+
+##### Records per Page
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image15-1.gif" style="width:4.875in;height:1.25833in" />
+
+| **Feature** | **Details**                                             |
+|-------------|---------------------------------------------------------|
+| Function    | Sets the number of items shown per page in record views |
+| Options     | Typically includes 10, 25, 50, 100, etc.                |
+| Usage       | Select from the drop-down menu to adjust view size      |
+
+##### Saved Filters
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image16-1.png" style="width:4.875in;height:0.84167in" />
+
+**Purpose:** Filter data based on specific conditions.
+
+**Creating Filters:**
+
+1.  Click a filter field under a column header.
+
+2.  Type in the condition.
+
+3.  Press **Enter** to apply.
+
+4.  Click **Save Filter** and provide a name.
+
+**Applying and Deleting Filters:**
+
+<img src="C:\Docs\mdx_format\media\Probe/media/image17-1.gif" style="width:4.875in;height:0.94167in" />
+
+1.  Open the **Saved Filter** icon.
+
+2.  Select from the list.
+
+3.  Click **Set as Default** to apply automatically (only one default allowed).
+
+4.  Use the **trashcan** icon to delete.
+
+ Filters are unique to each user and do not affect others.
