@@ -9,6 +9,70 @@
     }
   }
 
+  function injectStyles(){
+    if (document.getElementById('virima-inline-styles')) return;
+    const css = `
+      /* Global typography */
+      :root { --virima-font: 'AvenirLTStd', 'Avenir', 'Helvetica Neue', Arial, sans-serif; }
+      body, html, .mintlify, .mintlify * { font-family: var(--virima-font) !important; font-size: 16px; }
+      h1 { font-family: var(--virima-font) !important; font-weight: 700 !important; font-size: 28px !important; }
+      h2 { font-family: var(--virima-font) !important; font-weight: 700 !important; font-size: 24px !important; }
+      h3 { font-family: var(--virima-font) !important; font-weight: 800 !important; font-size: 32px !important; }
+      h4 { font-family: var(--virima-font) !important; font-weight: 700 !important; font-size: 22px !important; }
+      h5 { font-family: var(--virima-font) !important; font-weight: 700 !important; font-size: 20px !important; }
+      h6 { font-family: var(--virima-font) !important; font-weight: 700 !important; font-size: 18px !important; }
+      .ask-virima-container{position:fixed;right:24px;bottom:24px;z-index:2147483645}
+      .ask-virima-button{background:#00A651;color:#fff;padding:12px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer;box-shadow:0 6px 16px rgba(0,166,81,.3)}
+      .ask-virima-button:hover{background:#008A44}
+      .ask-virima-dropdown{position:absolute;right:0;bottom:60px;background:#fff;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.18);width:420px;display:none;overflow:hidden}
+      .ask-virima-dropdown .dropdown-header{padding:20px 24px;border-bottom:1px solid #e2e8f0;text-align:center}
+      .ask-virima-dropdown .dropdown-header h3{font-size:28px;font-weight:800;margin:0 0 6px}
+      .ask-virima-dropdown .dropdown-header p{margin:0;color:#475569}
+      .ask-virima-dropdown .ask-search-row{margin-top:14px}
+      .ask-virima-dropdown .ask-search-row input{flex:1;border:1px solid #e2e8f0;border-radius:10px}
+      .ask-virima-dropdown .ask-search-row button{background:#00A651;color:#fff;border-radius:10px}
+      .ask-virima-dropdown .dropdown-options{padding:12px 16px}
+      .ask-virima-dropdown .ai-option{display:block;padding:12px;border-radius:10px;color:#0f172a;text-decoration:none}
+      .ask-virima-dropdown .ai-option div{display:block}
+      .ask-virima-dropdown .ai-option strong{display:block;margin:0 0 4px;font-weight:700}
+      .ask-virima-dropdown .ai-option span{display:block;color:#64748b;font-size:14px;line-height:1.5}
+      .ask-virima-dropdown .ai-option:hover{background:#f8fafc}
+      .ask-list{padding:16px 24px;display:flex;flex-direction:column;gap:16px}
+      .ask-item{display:flex;gap:12px;align-items:flex-start}
+      .ask-item .icon{width:28px;height:28px;border-radius:50%;background:#ecfeff;color:#0f172a;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+      .ask-item .text .title{font-weight:700;margin:0 0 4px}
+      .ask-item .text .desc{margin:0;color:#64748b}
+      .ask-powered{border-top:1px solid #e2e8f0;padding:14px 24px;font-size:12px;color:#64748b;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+      .chat-panel{position:fixed;right:24px;bottom:96px;width:400px;height:600px;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden;z-index:2147483646}
+      .chat-panel .chat-header{background:#00A651;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+      .chat-panel .chat-messages{flex:1;overflow:auto;padding:16px;background:#f8fafc;display:flex;flex-direction:column;gap:12px}
+      .chat-panel .chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0}
+      .chat-panel .chat-input input{flex:1;border:2px solid #e2e8f0;border-radius:10px;padding:10px}
+      .chat-panel .chat-input button{background:#00A651;color:#fff;border-radius:10px;width:44px}
+      .chat-message{display:flex;gap:10px}
+      .chat-message .message-avatar{width:32px;height:32px;border-radius:50%;background:#00A651;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+      .chat-message .message-content{background:#fff;padding:10px 12px;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+      .virima-search-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:2147483644;display:none;align-items:flex-start;justify-content:center;padding-top:80px}
+      .virima-search-overlay.active{display:flex}
+      .virima-search-container{background:#fff;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,.25);width:90%;max-width:720px;max-height:80vh;display:flex;flex-direction:column;overflow:hidden}
+      .virima-search-header{display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid #e2e8f0}
+      .virima-search-input{flex:1;border:none;outline:none;font-size:16px}
+      .virima-search-close{font-size:28px;background:transparent;color:#64748b;border-radius:8px;width:36px;height:36px}
+      .virima-search-scope{display:flex;gap:16px;padding:12px 16px;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+      .virima-search-results{flex:1;overflow:auto;padding:16px}
+      /* Version menu */
+      .virima-version-menu{position:fixed;top:12px;right:24px;z-index:2147483643}
+      .virima-version-toggle{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1.5px solid #94a3b8;border-radius:10px;background:#fff;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.08);cursor:pointer;font-family:var(--virima-font);font-size:16px}
+      .virima-version-panel{position:absolute;top:44px;right:0;background:#fff;border:1.5px solid #cbd5e1;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.14);width:260px;padding:8px;display:none}
+      .virima-version-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px;border-radius:10px;cursor:pointer;font-family:var(--virima-font);font-size:16px}
+      .virima-version-item:hover{background:#f8fafc}
+    `;
+    const style = document.createElement('style');
+    style.id = 'virima-inline-styles';
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
+
   // Read optional endpoints from meta tags so you can wire your own backends
   function getMeta(name){ const m=document.querySelector('meta[name="'+name+'"]'); return m&&m.content?m.content:''; }
   function getMcpEndpoint(){ return getMeta('virima:mcp-endpoint'); }
@@ -77,10 +141,16 @@
       '      <button id="askVirimaGo" class="ask-virima-button" style="padding:10px 12px; border-radius:8px;">Ask</button>',
       '    </div>',
       '  </div>',
-      '  <div class="dropdown-options">',
-      '    <a href="#" class="ai-option" data-ai="virima"><div><strong>Ask questions</strong><span>About using our products and solutions</span></div></a>',
-      '    <a href="#" class="ai-option" data-ai="troubleshoot"><div><strong>Find troubleshooting guidance</strong><span>Get help with common issues</span></div></a>',
-      '    <a href="#" class="ai-option" data-ai="features"><div><strong>Learn about new features</strong><span>Discover enhancements and fixes</span></div></a>',
+      '  <div class="ask-list">',
+      '    <div class="ask-item"><div class="icon">⏱</div><div class="text"><div class="title">Ask questions</div><div class="desc">About using our products and solutions</div></div></div>',
+      '    <div class="ask-item"><div class="icon">☑</div><div class="text"><div class="title">Find troubleshooting guidance</div><div class="desc">Get help with common issues</div></div></div>',
+      '    <div class="ask-item"><div class="icon">⬤</div><div class="text"><div class="title">Learn about new features</div><div class="desc">Discover enhancements and fixes</div></div></div>',
+      '  </div>',
+      '  <div class="ask-powered">',
+      '    <span>POWERED BY</span>',
+      '    <label><input type="radio" name="virimaAgentSel" value="chatgpt"> ChatGPT</label>',
+      '    <span>|</span>',
+      '    <label><input type="radio" name="virimaAgentSel" value="claude"> Claude</label>',
       '  </div>',
       '</div>',
       '<div class="chat-panel" id="chatPanel">',
@@ -125,11 +195,7 @@
     const chatMessages = container.querySelector('#chatMessages');
     const agentSelect = container.querySelector('#agentSelect');
 
-    // Provide minimal inline styles so layout is correct even if CSS isn't loaded
-    Object.assign(container.style, { position:'fixed', right:'32px', bottom:'32px', zIndex:'1000' });
-    Object.assign(askBtn.style, { background:'#00A651', color:'#fff', padding:'12px 18px', borderRadius:'8px', fontWeight:'600' });
-    Object.assign(dropdown.style, { display:'none', position:'absolute', right:'0', bottom:'60px', background:'#fff', borderRadius:'12px', boxShadow:'0 8px 24px rgba(0,0,0,0.15)', width:'360px' });
-    Object.assign(chatPanel.style, { display:'none', position:'fixed', right:'32px', bottom:'100px', width:'380px', height:'560px', background:'#fff', borderRadius:'16px', boxShadow:'0 8px 24px rgba(0,0,0,0.15)' });
+    // Styles injected globally, keep JS clean
 
     // Initialize agent selection (persisted)
     const persisted = localStorage.getItem('virima-agent');
@@ -137,6 +203,15 @@
     agentSelect.value = persisted || defaultAgent;
     agentSelect.addEventListener('change', ()=>{
       localStorage.setItem('virima-agent', agentSelect.value);
+    });
+
+    // Sync with radio buttons in dropdown footer
+    const radios = container.querySelectorAll('input[name="virimaAgentSel"]');
+    radios.forEach(r=>{
+      r.checked = (r.value === (persisted || defaultAgent));
+      r.addEventListener('change', ()=>{
+        if(r.checked){ agentSelect.value = r.value; localStorage.setItem('virima-agent', r.value); }
+      });
     });
 
     function openDropdown() { dropdown.style.display = (dropdown.style.display==='none' || dropdown.style.display==='') ? 'block' : 'none'; }
@@ -194,19 +269,19 @@
   // Lightweight search overlay with page/all docs toggle
   function buildSearchOverlay(){
     const overlay = document.createElement('div');
-    overlay.className = 'search-overlay';
+    overlay.className = 'virima-search-overlay';
     overlay.id = 'virimaSearchOverlay';
     overlay.innerHTML = [
-      '<div class="search-container">',
-      '  <div class="search-header">',
-      '    <input type="search" id="virimaMainSearch" placeholder="Search within documentation" class="search-input" />',
-      '    <button class="search-close" id="virimaSearchClose" aria-label="Close">&times;</button>',
+      '<div class="virima-search-container">',
+      '  <div class="virima-search-header">',
+      '    <input type="search" id="virimaMainSearch" placeholder="Search within documentation" class="virima-search-input" />',
+      '    <button class="virima-search-close" id="virimaSearchClose" aria-label="Close">&times;</button>',
       '  </div>',
-      '  <div class="search-scope">',
+      '  <div class="virima-search-scope">',
       '    <label class="scope-option"><input type="radio" name="virimaScope" value="page" checked> <span>Search this page</span></label>',
       '    <label class="scope-option"><input type="radio" name="virimaScope" value="all"> <span>Search all docs</span></label>',
       '  </div>',
-      '  <div class="search-results" id="virimaSearchResults"></div>',
+      '  <div class="virima-search-results" id="virimaSearchResults"></div>',
       '</div>'
     ].join('');
     document.body.appendChild(overlay);
@@ -285,7 +360,35 @@
     input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); perform(); }});
   }
 
-  onReady(function(){ buildWidget(); buildSearchOverlay(); });
+  function buildVersionMenu(){
+    const container = document.createElement('div');
+    container.className = 'virima-version-menu';
+    container.innerHTML = [
+      '<button class="virima-version-toggle" id="virimaVerToggle">',
+      '  <span>Select version</span>',
+      '  <span style="font-size:12px">▾</span>',
+      '</button>',
+      '<div class="virima-version-panel" id="virimaVerPanel">',
+      '  <div class="virima-version-item" data-href="/v6.1/">',
+      '    <span>6.1 (Latest)</span>',
+      '    <span>›</span>',
+      '  </div>',
+      '</div>'
+    ].join('');
+    document.body.appendChild(container);
+    const toggle = container.querySelector('#virimaVerToggle');
+    const panel = container.querySelector('#virimaVerPanel');
+    toggle.addEventListener('click', ()=>{ panel.style.display = (panel.style.display==='block')?'none':'block'; });
+    document.addEventListener('click', (e)=>{ if(!container.contains(e.target)) panel.style.display='none'; });
+    container.querySelectorAll('.virima-version-item').forEach(item=>{
+      item.addEventListener('click', ()=>{
+        const href = item.getAttribute('data-href');
+        if(href){ window.location.href = href; }
+      });
+    });
+  }
+
+  onReady(function(){ injectStyles(); buildWidget(); buildSearchOverlay(); buildVersionMenu(); });
   console.log('Virima custom JS loaded');
 })();
 
